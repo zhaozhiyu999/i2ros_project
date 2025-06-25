@@ -26,6 +26,10 @@ The goal is to control an autonomous vehicle in a simulated urban environment us
 
 Make sure you're using **Ubuntu 20.04 + ROS Noetic**.
 
+⚠️ Make sure the Unity simulator is running before launching ROS nodes!
+
+
+
 ```bash
 sudo apt update
 sudo apt install ros-noetic-octomap ros-noetic-image-common ros-noetic-ackermann-msgs
