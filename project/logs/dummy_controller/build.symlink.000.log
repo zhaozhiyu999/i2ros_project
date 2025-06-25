@@ -1,0 +1,4 @@
+Symlinking /home/zzy/introtoros_2025-main-project/project/devel/lib/pkgconfig/dummy_controller.pc
+Symlinking /home/zzy/introtoros_2025-main-project/project/devel/lib/dummy_controller/dummy_controller_node
+Symlinking /home/zzy/introtoros_2025-main-project/project/devel/share/dummy_controller/cmake/dummy_controllerConfig.cmake
+Symlinking /home/zzy/introtoros_2025-main-project/project/devel/share/dummy_controller/cmake/dummy_controllerConfig-version.cmake

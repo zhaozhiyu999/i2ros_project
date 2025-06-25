@@ -1,0 +1,13 @@
+# Target labels
+ libsocket
+# Source files and their labels
+/home/zzy/introtoros_2025-main-project/project/build/simulation/CMakeFiles/libsocket
+/home/zzy/introtoros_2025-main-project/project/build/simulation/CMakeFiles/libsocket.rule
+/home/zzy/introtoros_2025-main-project/project/build/simulation/CMakeFiles/libsocket-complete.rule
+/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-install.rule
+/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-mkdir.rule
+/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-download.rule
+/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-update.rule
+/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-patch.rule
+/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-configure.rule
+/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-build.rule

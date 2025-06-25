@@ -1,0 +1,16 @@
+<launch>
+  <!-- 启动仿真桥 -->
+  <include file="$(find simulation)/launch/simulation.launch"/>
+
+  <!-- 启动 perception -->
+  <include file="$(find perception)/launch/perception.launch"/>
+
+  <!-- 启动 planning -->
+  <include file="$(find planning)/launch/planning.launch"/>
+
+  <!-- 启动 decision making -->
+  <include file="$(find decision_making)/launch/decision.launch"/>
+
+  <!-- 启动 control -->
+  <include file="$(find control)/launch/control.launch"/>
+</launch>
