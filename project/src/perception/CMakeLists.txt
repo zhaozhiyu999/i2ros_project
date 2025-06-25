@@ -138,6 +138,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/perception_node.cpp)
+add_executable(mock_traffic_light_publisher src/mock_traffic_light_publisher.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -153,7 +154,9 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-
+target_link_libraries(mock_traffic_light_publisher
+  ${catkin_LIBRARIES}
+)
 #############
 ## Install ##
 #############

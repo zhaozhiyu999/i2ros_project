@@ -1,3 +1,5 @@
+<!-- perception/launch/perception.launch -->
 <launch>
-  <!-- 感知节点占位 -->
+  <node name="mock_traffic_light_publisher" pkg="perception" type="mock_traffic_light_publisher" output="screen" />
 </launch>
+

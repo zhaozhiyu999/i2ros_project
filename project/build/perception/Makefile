@@ -324,6 +324,19 @@ roscpp_generate_messages_py/fast:
 .PHONY : roscpp_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named mock_traffic_light_publisher
+
+# Build rule for target.
+mock_traffic_light_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mock_traffic_light_publisher
+.PHONY : mock_traffic_light_publisher
+
+# fast build rule for target.
+mock_traffic_light_publisher/fast:
+	$(MAKE) -f CMakeFiles/mock_traffic_light_publisher.dir/build.make CMakeFiles/mock_traffic_light_publisher.dir/build
+.PHONY : mock_traffic_light_publisher/fast
+
+#=============================================================================
 # Target rules for targets named sensor_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -804,6 +817,33 @@ gtest/fast:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+src/mock_traffic_light_publisher.o: src/mock_traffic_light_publisher.cpp.o
+
+.PHONY : src/mock_traffic_light_publisher.o
+
+# target to build an object file
+src/mock_traffic_light_publisher.cpp.o:
+	$(MAKE) -f CMakeFiles/mock_traffic_light_publisher.dir/build.make CMakeFiles/mock_traffic_light_publisher.dir/src/mock_traffic_light_publisher.cpp.o
+.PHONY : src/mock_traffic_light_publisher.cpp.o
+
+src/mock_traffic_light_publisher.i: src/mock_traffic_light_publisher.cpp.i
+
+.PHONY : src/mock_traffic_light_publisher.i
+
+# target to preprocess a source file
+src/mock_traffic_light_publisher.cpp.i:
+	$(MAKE) -f CMakeFiles/mock_traffic_light_publisher.dir/build.make CMakeFiles/mock_traffic_light_publisher.dir/src/mock_traffic_light_publisher.cpp.i
+.PHONY : src/mock_traffic_light_publisher.cpp.i
+
+src/mock_traffic_light_publisher.s: src/mock_traffic_light_publisher.cpp.s
+
+.PHONY : src/mock_traffic_light_publisher.s
+
+# target to generate assembly for a file
+src/mock_traffic_light_publisher.cpp.s:
+	$(MAKE) -f CMakeFiles/mock_traffic_light_publisher.dir/build.make CMakeFiles/mock_traffic_light_publisher.dir/src/mock_traffic_light_publisher.cpp.s
+.PHONY : src/mock_traffic_light_publisher.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -826,6 +866,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_py"
+	@echo "... mock_traffic_light_publisher"
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_py"
@@ -866,6 +907,9 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... src/mock_traffic_light_publisher.o"
+	@echo "... src/mock_traffic_light_publisher.i"
+	@echo "... src/mock_traffic_light_publisher.s"
 .PHONY : help
 
 

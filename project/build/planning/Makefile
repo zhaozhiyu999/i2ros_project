@@ -80,16 +80,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -100,6 +90,16 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target test
 test:
@@ -166,6 +166,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named mock_trajectory_publisher
+
+# Build rule for target.
+mock_trajectory_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mock_trajectory_publisher
+.PHONY : mock_trajectory_publisher
+
+# fast build rule for target.
+mock_trajectory_publisher/fast:
+	$(MAKE) -f CMakeFiles/mock_trajectory_publisher.dir/build.make CMakeFiles/mock_trajectory_publisher.dir/build
+.PHONY : mock_trajectory_publisher/fast
 
 #=============================================================================
 # Target rules for targets named msg_interfaces_generate_messages_py
@@ -869,6 +882,33 @@ gtest/fast:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+src/mock_trajectory_publisher.o: src/mock_trajectory_publisher.cpp.o
+
+.PHONY : src/mock_trajectory_publisher.o
+
+# target to build an object file
+src/mock_trajectory_publisher.cpp.o:
+	$(MAKE) -f CMakeFiles/mock_trajectory_publisher.dir/build.make CMakeFiles/mock_trajectory_publisher.dir/src/mock_trajectory_publisher.cpp.o
+.PHONY : src/mock_trajectory_publisher.cpp.o
+
+src/mock_trajectory_publisher.i: src/mock_trajectory_publisher.cpp.i
+
+.PHONY : src/mock_trajectory_publisher.i
+
+# target to preprocess a source file
+src/mock_trajectory_publisher.cpp.i:
+	$(MAKE) -f CMakeFiles/mock_trajectory_publisher.dir/build.make CMakeFiles/mock_trajectory_publisher.dir/src/mock_trajectory_publisher.cpp.i
+.PHONY : src/mock_trajectory_publisher.cpp.i
+
+src/mock_trajectory_publisher.s: src/mock_trajectory_publisher.cpp.s
+
+.PHONY : src/mock_trajectory_publisher.s
+
+# target to generate assembly for a file
+src/mock_trajectory_publisher.cpp.s:
+	$(MAKE) -f CMakeFiles/mock_trajectory_publisher.dir/build.make CMakeFiles/mock_trajectory_publisher.dir/src/mock_trajectory_publisher.cpp.s
+.PHONY : src/mock_trajectory_publisher.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -877,8 +917,9 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install"
-	@echo "... list_install_components"
 	@echo "... edit_cache"
+	@echo "... list_install_components"
+	@echo "... mock_trajectory_publisher"
 	@echo "... msg_interfaces_generate_messages_py"
 	@echo "... msg_interfaces_generate_messages_nodejs"
 	@echo "... msg_interfaces_generate_messages_eus"
@@ -936,6 +977,9 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... src/mock_trajectory_publisher.o"
+	@echo "... src/mock_trajectory_publisher.i"
+	@echo "... src/mock_trajectory_publisher.s"
 .PHONY : help
 
 

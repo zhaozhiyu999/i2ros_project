@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/zzy/introtoros_2025-main-project/project/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/zzy/introtoros_2025-main-project/project/src/control/include/**",
+        "/home/zzy/introtoros_2025-main-project/project/src/decision_making/include/**",
+        "/home/zzy/ros_ws/src/helloworld/include/**",
+        "/home/zzy/introtoros_2025-main-project/project/src/perception/include/**",
+        "/home/zzy/introtoros_2025-main-project/project/src/planning/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
