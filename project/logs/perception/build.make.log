@@ -1,4 +1,0 @@
-[35m[1mScanning dependencies of target mock_traffic_light_publisher[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/mock_traffic_light_publisher.dir/src/mock_traffic_light_publisher.cpp.o[0m
-[100%] [32m[1mLinking CXX executable /home/zzy/introtoros_2025-main-project/project/devel/.private/perception/lib/perception/mock_traffic_light_publisher[0m
-[100%] Built target mock_traffic_light_publisher

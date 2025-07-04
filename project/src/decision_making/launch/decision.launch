@@ -1,3 +1,7 @@
 <launch>
-  <!-- decision节点占位 -->
+  <!-- 决策节点：订阅红绿灯 / 急刹危险，发布 emergency_stop -->
+  <node pkg="decision_making"
+        type="decision_node"
+        name="decision_node"
+        output="screen"/>
 </launch>

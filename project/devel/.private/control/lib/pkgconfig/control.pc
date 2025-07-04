@@ -1,8 +1,0 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/control
-
-Name: control
-Description: Description of control
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

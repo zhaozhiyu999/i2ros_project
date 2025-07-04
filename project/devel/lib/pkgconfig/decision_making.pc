@@ -1,1 +1,0 @@
-/home/zzy/introtoros_2025-main-project/project/devel/.private/decision_making/lib/pkgconfig/decision_making.pc

@@ -1,1 +1,0 @@
-/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/include/msg_interfaces/Trajectory.h
