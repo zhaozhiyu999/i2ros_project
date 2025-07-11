@@ -1,5 +1,8 @@
-<!-- perception/launch/perception.launch -->
 <launch>
-  <node name="mock_traffic_light_publisher" pkg="perception" type="mock_traffic_light_publisher" output="screen" />
+  <!-- 启动地图构建 -->
+  <include file="$(find perception)/launch/map_builder.launch" />
+
+  <!-- 启动红绿灯检测 -->
+  <include file="$(find perception)/launch/traffic_light.launch" />
 </launch>
 

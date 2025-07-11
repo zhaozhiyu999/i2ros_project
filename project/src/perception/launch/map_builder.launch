@@ -1,0 +1,24 @@
+<launch>
+  <!-- 静态 TF：map → world（解决 TF 警告） -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="tf_static_map_to_world"
+        args="0 0 0 0 0 0 map world" />
+
+  <!-- DepthCamera 相对于 INS 的位置与姿态 -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="tf_depth_relative_to_ins"
+        args="0.82 0.0 0.56 -1.5708 0 -1.5708 OurCar/INS OurCar/Sensors/DepthCamera" />
+       
+  <node pkg="perception" type="depth_to_cloud_node" name="depth_to_cloud_node" output="screen"/>
+  
+  <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" output="screen">
+    <param name="frame_id" value="map"/>
+    <param name="resolution" value="0.1"/>
+    <param name="sensor_model/max_range" value="20.0"/>
+    <param name="latch" value="true"/>
+    <param name="color/enable" value="false"/>
+    <remap from="cloud_in" to="/depth/points"/> <!-- 你要提供的点云话题 -->
+  </node>
+  <node pkg="perception" type="map_builder_node" name="map_builder_node" output="screen"/>
+
+
+</launch>
+
