@@ -1,8 +1,11 @@
 <launch>
-  <!-- 启动地图构建 -->
+  <!-- launch MAPbuilder -->
   <include file="$(find perception)/launch/map_builder.launch" />
 
-  <!-- 启动红绿灯检测 -->
+  <!-- launch Trafficlight -->
   <include file="$(find perception)/launch/traffic_light.launch" />
+  
+  <!-- Launch Hazarddetect -->
+  <include file="$(find perception)/launch/front_hazard.launch" />
 </launch>
 

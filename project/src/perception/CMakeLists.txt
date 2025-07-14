@@ -33,3 +33,5 @@ target_link_libraries(depth_to_cloud_node ${catkin_LIBRARIES})
 add_executable(traffic_light_node src/traffic_light_node.cpp)
 target_link_libraries(traffic_light_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
+add_executable(front_hazard_node src/front_hazard_node.cpp)
+target_link_libraries(front_hazard_node ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})

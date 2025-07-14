@@ -60,7 +60,7 @@ private:
             return;
         }
     }
-
+    //catch in semantic camera
     void process()
     {
         if (latest_rgb_.empty() || latest_sem_.empty()) return;
@@ -91,7 +91,7 @@ private:
             }
         }
 
-        // 等比例缩放 best_box 到 RGB 图像中
+        // transfrom the trafficlight part to RGB camera
     
         double scale_x = latest_rgb_.cols / static_cast<double>(latest_sem_.cols);
         double scale_y = latest_rgb_.rows / static_cast<double>(latest_sem_.rows);
@@ -131,13 +131,13 @@ private:
         std_msgs::String msg;
         if (red_count > 10) msg.data = "red";
         else if (green_count > 10) msg.data = "green";
-        else msg.data = "unknown";
+        else msg.data = "green";//or unknown
 
         pub_.publish(msg);
 
-        // Debug 显示
+        // Debug 
         cv::Mat dbg = latest_rgb_.clone();
-        cv::rectangle(dbg, roi, cv::Scalar(255, 0, 0), 2);  // 仅用于可视化
+        cv::rectangle(dbg, roi, cv::Scalar(255, 0, 0), 2);  // visiable
         debug_pub_.publish(cv_bridge::CvImage(std_msgs::Header(), "bgr8", dbg).toImageMsg());
     }
 };
