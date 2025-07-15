@@ -1,19 +1,63 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(control)
+project(control_package)
 
-## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+## 编译选项
+add_compile_options(-std=c++14)
 
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
+## 查找catkin包
 find_package(catkin REQUIRED COMPONENTS
-  ackermann_msgs
-  geometry_msgs
   roscpp
+  rospy
   std_msgs
+  geometry_msgs
+  nav_msgs
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+  simulation
+  msg_interfaces
 )
 
+## 系统依赖
+find_package(Eigen3 REQUIRED)
+
+## catkin包配置
+catkin_package(
+  LIBRARIES ${PROJECT_NAME}
+  CATKIN_DEPENDS 
+    roscpp 
+    rospy 
+    std_msgs 
+    geometry_msgs 
+    nav_msgs 
+    tf2 
+    tf2_ros 
+    tf2_geometry_msgs
+    simulation
+    msg_interfaces
+  DEPENDS EIGEN3
+)
+
+## 包含目录
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIRS}
+)
+
+## 可执行文件: 主控制节点
+add_executable(control_node src/control_node.cpp)
+add_dependencies(control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(control_node ${catkin_LIBRARIES})
+
+## 安装规则
+install(TARGETS control_node
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(DIRECTORY launch/ config/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  PATTERN ".svn" EXCLUDE
+)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 

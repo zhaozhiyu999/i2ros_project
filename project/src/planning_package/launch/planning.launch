@@ -1,0 +1,83 @@
+<launch>
+  <!-- ========== 路径规划模块 ========== -->
+  <node name="path_planner" 
+        pkg="planning_package" 
+        type="planning_node" 
+        output="screen"
+        respawn="false">
+    
+    <!-- 规划参数 -->
+    <param name="planning_frequency" value="10.0" />
+    <param name="default_speed" value="2.5" />
+    <param name="trajectory_points" value="6" />
+    <param name="lookahead_distance" value="8.0" />
+    
+    <!-- 车辆参数 -->
+    <param name="vehicle_width" value="1.8" />
+    <param name="safety_margin" value="0.3" />
+    
+    <!-- 避障参数 -->
+    <param name="avoidance_distance" value="2.5" />
+    <param name="obstacle_check_distance" value="6.0" />
+    
+    <!-- 可视化参数 -->
+    <param name="path_interpolation_resolution" value="0.3" />
+    
+    <!-- 日志级别 -->
+    <param name="log_level" value="INFO" />
+  </node>
+
+  <!-- ========== 轨迹可视化模块 ========== -->
+  <node name="trajectory_visualizer" 
+        pkg="planning_package" 
+        type="trajectory_visualizer" 
+        output="screen"
+        respawn="false">
+    
+    <!-- 可视化参数 -->
+    <param name="visualization_frequency" value="10.0" />
+    <param name="show_waypoint_numbers" value="true" />
+    <param name="show_speed_colors" value="true" />
+    <param name="trajectory_line_width" value="0.15" />
+    <param name="waypoint_scale" value="0.3" />
+    <param name="interpolation_resolution" value="0.2" />
+    
+    <!-- 显示选项 -->
+    <param name="show_vehicle" value="true" />
+    <param name="show_direction_arrows" value="true" />
+  </node>
+
+  <!-- ========== RViz可视化 (可选) ========== -->
+  <arg name="rviz" default="true" />
+  <node if="$(arg rviz)" 
+        name="rviz" 
+        pkg="rviz" 
+        type="rviz" 
+        args="-d $(find planning_package)/config/planning_viz.rviz"
+        output="screen" />
+
+  <!-- ========== 参数说明 ========== -->
+  <!-- 
+  路径规划参数:
+  - planning_frequency: 规划频率 (Hz)
+  - default_speed: 默认规划速度 (m/s)
+  - trajectory_points: 轨迹点数量
+  - lookahead_distance: 前瞻距离 (m)
+  - vehicle_width: 车辆宽度 (m)
+  - safety_margin: 安全边距 (m)
+  - avoidance_distance: 避障偏移距离 (m)
+  - obstacle_check_distance: 障碍物检测距离 (m)
+  - path_interpolation_resolution: 路径插值分辨率 (m)
+  
+  可视化参数:
+  - visualization_frequency: 可视化刷新频率 (Hz)
+  - show_waypoint_numbers: 显示路径点编号
+  - show_speed_colors: 根据速度显示颜色
+  - trajectory_line_width: 轨迹线宽度 (m)
+  - waypoint_scale: 路径点大小
+  - interpolation_resolution: 平滑插值分辨率 (m)
+  - show_vehicle: 显示车辆模型
+  - show_direction_arrows: 显示方向箭头
+  -->
+
+</launch>

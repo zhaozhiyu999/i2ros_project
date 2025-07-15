@@ -1,0 +1,29 @@
+# Enhanced Vehicle Controller Parameters
+# Simple configuration without complex nested structures
+
+# Vehicle physical parameters
+max_linear_velocity: 5.0
+max_angular_velocity: 1.5
+wheelbase: 2.7
+control_frequency: 20.0
+
+# Pure Pursuit parameters
+lookahead_distance: 2.5
+pure_pursuit_lookahead_ratio: 0.3
+min_lookahead_distance: 1.5
+max_lookahead_distance: 5.0
+
+# Longitudinal control PID parameters
+kp_linear: 1.2
+ki_linear: 0.05
+kd_linear: 0.1
+
+# Lateral control PID parameters
+kp_angular: 2.5
+ki_angular: 0.0
+kd_angular: 0.15
+
+# TF and coordinate frame parameters
+tf_timeout: 0.1
+control_frame: "base_link"
+map_frame: "map"
