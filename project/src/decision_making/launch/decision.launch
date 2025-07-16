@@ -1,7 +1,45 @@
+<?xml version="1.0"?>
 <launch>
-  <!-- 决策节点：订阅红绿灯 / 急刹危险，发布 emergency_stop -->
-  <node pkg="decision_making"
-        type="decision_node"
-        name="decision_node"
-        output="screen"/>
+    <!-- ========== 决策模块参数 ========== -->
+    <arg name="decision_frequency" default="10.0" />
+    <arg name="debug" default="false" />
+    
+    <!-- ========== 决策节点 ========== -->
+    <node name="decision_node" pkg="decision_making" type="decision_node" output="screen">
+        <param name="decision_frequency" value="$(arg decision_frequency)" />
+        <param name="red_light_stop_distance" value="5.0" />
+        <param name="hazard_reaction_time" value="0.5" />
+        <param name="behavior_change_cooldown" value="1.0" />
+        
+        <!-- 订阅感知模块话题 -->
+        <remap from="/perception/traffic_light_status" to="/perception/traffic_light_status" />
+        <remap from="/perception/front_hazard" to="/perception/front_hazard" />
+        
+        <!-- 发布决策结果 -->
+        <remap from="/decision/behavior_command" to="/decision/behavior_command" />
+        <remap from="/decision/emergency_stop" to="/decision/emergency_stop" />
+    </node>
+    
+    <!-- ========== 决策参数 ========== -->
+    <rosparam>
+        decision:
+          priority_rules:
+            - emergency_stop    # 最高优先级
+            - red_light_stop   
+            - obstacle_avoidance
+            - normal_driving   # 最低优先级
+          
+          timing:
+            red_light_stop_distance: 5.0
+            hazard_reaction_time: 0.5
+            decision_confidence_threshold: 0.8
+    </rosparam>
+    
+    <!-- ========== 调试模式 ========== -->
+    <group if="$(arg debug)">
+        <node name="decision_monitor" pkg="your_package" type="decision_monitor.py" output="screen" />
+        <node name="rqt_plot_decision" pkg="rqt_plot" type="rqt_plot" 
+              args="/decision/behavior_command/data /decision/emergency_stop/data" />
+    </group>
+    
 </launch>
