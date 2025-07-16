@@ -5,6 +5,7 @@ add_compile_options(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  roslib
   std_msgs
   geometry_msgs
   nav_msgs
@@ -18,6 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   CATKIN_DEPENDS 
     roscpp 
+    roslib
     std_msgs 
     geometry_msgs 
     nav_msgs
