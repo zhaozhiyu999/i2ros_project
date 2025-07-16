@@ -6,6 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Map1
+        - /Path1
+        - /Marker1
         - /Marker2
         - /Marker3
       Splitter Ratio: 0.5
@@ -63,24 +66,6 @@ Visualization Manager:
       Unreliable: false
       Use Timestamp: false
       Value: true
-    - Class: rviz/Marker
-      Enabled: true
-      Marker Topic: /decision/status_display
-      Name: Marker
-      Namespaces:
-        decision_status: true
-      Queue Size: 100
-      Value: true
-    - Alpha: 0.699999988079071
-      Class: rviz/Map
-      Color Scheme: map
-      Draw Behind: false
-      Enabled: true
-      Name: Map
-      Topic: /planning/inflated_map
-      Unreliable: false
-      Use Timestamp: false
-      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -115,17 +100,25 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /planning/map_visualization
+      Marker Topic: /planning/vehicle_model
       Name: Marker
       Namespaces:
-        occupancy_map: true
+        vehicle: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /planning/behavior_indicatoraaaaaaaaa
+      Name: Marker
+      Namespaces:
+        {}
       Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -149,7 +142,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 23.641220092773438
+      Distance: 25.797298431396484
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -165,9 +158,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4853980243206024
+      Pitch: 0.6253981590270996
       Target Frame: <Fixed Frame>
-      Yaw: 3.4304039478302
+      Yaw: 3.11039662361145
     Saved: ~
 Window Geometry:
   Displays:
@@ -185,5 +178,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 602
-  Y: 27
+  X: 351
+  Y: 69

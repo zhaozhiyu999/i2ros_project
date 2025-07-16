@@ -1,26 +1,26 @@
-<?xml version="1.0"?>
 <launch>
-    <!-- ========== 参数设置 ========== -->
-    <arg name="planning_frequency" default="5.0" />
+    <!-- ========== 启动参数 ========== -->
     <arg name="enable_rviz" default="true" />
     <arg name="debug" default="false" />
+    <arg name="rviz_config" default="$(find planning_package)/rviz/planning_viz.rviz" />
     
-    <!-- ========== 规划节点 ========== -->
+    <!-- ========== 响应式规划节点 ========== -->
     <node name="planning_node" 
           pkg="planning_package" 
           type="planning_node" 
           output="screen"
-          respawn="true">
+          required="true">
         
         <!-- 规划参数 -->
-        <param name="planning_frequency" value="$(arg planning_frequency)" />
-        <param name="lookahead_distance" value="10.0" />
-        <param name="trajectory_points" value="8" />
-        <param name="default_speed" value="3.0" />
-        <param name="avoidance_lateral_distance" value="2.5" />
+        <param name="planning_frequency" value="10.0" />
+        <param name="lookahead_distance" value="12.0" />
+        <param name="max_speed" value="3.5" />
+        <param name="emergency_decel" value="6.0" />
         <param name="vehicle_width" value="1.8" />
         <param name="safety_margin" value="0.5" />
-        
+        <param name="trajectory_points" value="10" />
+        <param name="avoidance_lateral_distance" value="2.5" />
+        <param name="stopping_distance" value="8.0" />
     </node>
     
     <!-- ========== RViz可视化 ========== -->
@@ -29,12 +29,55 @@
               pkg="rviz" 
               type="rviz" 
               output="screen"
-              required="false" />
+              required="false"
+              args="-f base_link -d $(arg rviz_config)" />
     </group>
     
     <!-- ========== 调试工具（可选） ========== -->
     <group if="$(arg debug)">
-        <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" />
+        <!-- 话题监控 -->
+        <node name="topic_monitor" 
+              pkg="rostopic" 
+              type="rostopic" 
+              args="hz /planning/trajectory /planning/path" 
+              output="screen" />
+        
+        <!-- TF监控 -->
+        <node name="tf_monitor" 
+              pkg="tf2_ros" 
+              type="tf2_echo" 
+              args="map base_link" 
+              output="screen" />
+        
+        <!-- 测试紧急停车指令 -->
+        <node name="emergency_test" 
+              pkg="rostopic" 
+              type="rostopic" 
+              args="pub -r 0.1 /decision/emergency_stop std_msgs/Bool 'data: false'" 
+              output="screen" />
     </group>
+    
+    <!-- ========== 参数配置 ========== -->
+    <rosparam>
+        # 规划节点参数
+        planning_node:
+            # 行为检测参数
+            obstacle_detection:
+                front_check_distance: 6.0
+                lateral_check_width: 2.8
+                obstacle_threshold: 70
+            
+            # 避障参数
+            avoidance:
+                s_curve_ratio_start: 0.3
+                s_curve_ratio_end: 0.7
+                speed_reduction_factor: 0.7
+            
+            # 紧急制动参数
+            emergency_brake:
+                max_deceleration: 6.0
+                speed_reduction_factor: 2.5
+                min_brake_distance: 2.0
+    </rosparam>
     
 </launch>

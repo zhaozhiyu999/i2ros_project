@@ -9,6 +9,7 @@
 #include <visualization_msgs/MarkerArray.h>
 #include <tf2_ros/transform_listener.h>
 #include <tf2_ros/static_transform_broadcaster.h>
+#include <tf2_ros/transform_broadcaster.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2/LinearMath/Matrix3x3.h>
@@ -46,6 +47,9 @@ public:
         // ========== 路径可视化发布器 ==========
         path_visualization_pub_ = nh_.advertise<visualization_msgs::Marker>("/planning/path_visualization", 1);
         behavior_indicator_pub_ = nh_.advertise<visualization_msgs::Marker>("/planning/behavior_indicator", 1);
+        
+        // ========== 新增：车辆模型可视化 ==========
+        vehicle_model_pub_ = nh_.advertise<visualization_msgs::Marker>("/planning/vehicle_model", 1);
 
         // ========== 参数设置 ==========
         nh_.param("planning_frequency", planning_frequency_, 5.0);
@@ -59,6 +63,7 @@ public:
         // ========== 状态初始化 ==========
         current_behavior_ = "STRAIGHT";
         has_map_ = false;
+        initialized_ = false;
         
         // 使用简单的位置跟踪，不依赖外部TF
         current_x_ = 0.0;
@@ -69,11 +74,15 @@ public:
         planning_timer_ = nh_.createTimer(ros::Duration(1.0 / planning_frequency_),
                                          &PlanningNode::planningTimerCallback, this);
         
-        visualization_timer_ = nh_.createTimer(ros::Duration(0.5),  // 2Hz可视化更新
+        visualization_timer_ = nh_.createTimer(ros::Duration(0.2),  // 5Hz可视化更新，更加流畅
                                               &PlanningNode::visualizationTimerCallback, this);
 
-        ROS_INFO("Planning Node started with integrated visualization");
+        ROS_INFO("Planning Node started with enhanced visualization");
         ROS_INFO("Planning frequency: %.1f Hz, Lookahead: %.1f m", planning_frequency_, lookahead_distance_);
+        
+        // 延迟3秒后开始发布，等待其他节点启动
+        ros::Duration(3.0).sleep();
+        ROS_INFO("Planning node ready - starting visualization");
     }
 
 private:
@@ -87,6 +96,7 @@ private:
     ros::Publisher inflated_map_pub_;
     ros::Publisher path_visualization_pub_;
     ros::Publisher behavior_indicator_pub_;
+    ros::Publisher vehicle_model_pub_;  // 新增车辆模型发布器
     
     ros::Timer planning_timer_;
     ros::Timer visualization_timer_;
@@ -94,11 +104,13 @@ private:
     tf2_ros::Buffer tf_buffer_;
     tf2_ros::TransformListener tf_listener_;
     tf2_ros::StaticTransformBroadcaster static_tf_broadcaster_;
+    tf2_ros::TransformBroadcaster dynamic_tf_broadcaster_;
 
     // ========== 状态变量 ==========
     std::string current_behavior_;
     nav_msgs::OccupancyGrid current_map_;
     bool has_map_;
+    bool initialized_;
     std::vector<PathPoint> current_path_;
     
     // 简化的位置跟踪
@@ -113,21 +125,10 @@ private:
     double vehicle_width_;
     double safety_margin_;
 
-    // ========== 立即设置静态TF ========== 
+    // ========== 优化：TF设置更加健壮 ========== 
     void setupStaticTransforms()
     {
         std::vector<geometry_msgs::TransformStamped> static_transforms;
-        
-        // map -> base_link
-        geometry_msgs::TransformStamped map_to_base;
-        map_to_base.header.stamp = ros::Time::now();
-        map_to_base.header.frame_id = "map";
-        map_to_base.child_frame_id = "base_link";
-        map_to_base.transform.translation.x = 0.0;
-        map_to_base.transform.translation.y = 0.0;
-        map_to_base.transform.translation.z = 0.0;
-        map_to_base.transform.rotation.w = 1.0;
-        static_transforms.push_back(map_to_base);
         
         // base_link -> OurCar/Sensors/INS
         geometry_msgs::TransformStamped base_to_ins;
@@ -140,7 +141,7 @@ private:
         base_to_ins.transform.rotation.w = 1.0;
         static_transforms.push_back(base_to_ins);
         
-        // base_link -> DepthCamera
+        // base_link -> DepthCamera  
         geometry_msgs::TransformStamped base_to_depth;
         base_to_depth.header.stamp = ros::Time::now();
         base_to_depth.header.frame_id = "base_link";
@@ -152,10 +153,34 @@ private:
         static_transforms.push_back(base_to_depth);
         
         static_tf_broadcaster_.sendTransform(static_transforms);
-        ROS_INFO("Published static TF transforms");
+        ROS_INFO("Published static TF transforms for sensors");
         
         // 等待TF可用
-        ros::Duration(0.5).sleep();
+        ros::Duration(1.0).sleep();
+    }
+
+    // ========== 修复：动态TF发布更加频繁和稳定 ==========
+    void publishDynamicTF()
+    {
+        geometry_msgs::TransformStamped map_to_base;
+        map_to_base.header.stamp = ros::Time::now();
+        map_to_base.header.frame_id = "map";
+        map_to_base.child_frame_id = "base_link";
+        
+        // 使用当前车辆位置
+        map_to_base.transform.translation.x = current_x_;
+        map_to_base.transform.translation.y = current_y_;
+        map_to_base.transform.translation.z = 0.0;
+        
+        // 使用当前车辆朝向
+        tf2::Quaternion q;
+        q.setRPY(0, 0, current_yaw_);
+        map_to_base.transform.rotation.x = q.x();
+        map_to_base.transform.rotation.y = q.y();
+        map_to_base.transform.rotation.z = q.z();
+        map_to_base.transform.rotation.w = q.w();
+        
+        dynamic_tf_broadcaster_.sendTransform(map_to_base);
     }
 
     // ========== 回调函数 ==========
@@ -176,16 +201,22 @@ private:
         current_map_ = *msg;
         has_map_ = true;
         ROS_INFO_ONCE("📍 Received occupancy grid map for planning");
+        ROS_INFO_THROTTLE(5.0, "Map updated: %dx%d cells, resolution=%.3f", 
+                         msg->info.width, msg->info.height, msg->info.resolution);
     }
 
-    // ========== 定时器回调 ==========
+    // ========== 定时器回调，确保高频率更新 ==========
     void planningTimerCallback(const ros::TimerEvent& event)
     {
         generateAndPublishPath();
+        publishDynamicTF();  // 每次都发布TF
     }
 
     void visualizationTimerCallback(const ros::TimerEvent& event)
     {
+        // 始终发布车辆模型
+        publishVehicleModel();
+        
         if (has_map_) {
             publishMapVisualization();
             publishInflatedMap();
@@ -195,12 +226,15 @@ private:
             publishPathVisualization();
             publishBehaviorIndicator();
         }
+        
+        // 高频发布TF
+        publishDynamicTF();
     }
 
-    // ========== 简化的位置获取 ==========
+    // ========== 位置获取优化 ==========
     bool getCurrentPose(double& x, double& y, double& yaw)
     {
-        // 尝试从TF获取，如果失败则使用模拟位置
+        // 首先尝试从外部TF获取位置
         geometry_msgs::TransformStamped transform;
         try {
             transform = tf_buffer_.lookupTransform("map", "base_link", ros::Time(0), ros::Duration(0.1));
@@ -220,23 +254,42 @@ private:
             y = current_y_;
             yaw = current_yaw_;
             
+            if (!initialized_) {
+                ROS_INFO("✅ Received external vehicle position: (%.2f, %.2f, %.2f°)", 
+                        x, y, yaw * 180.0 / M_PI);
+                initialized_ = true;
+            }
+            
             return true;
             
         } catch (tf2::TransformException& ex) {
-            // TF不可用，使用模拟的车辆移动
-            static double sim_time = 0.0;
-            sim_time += 0.2;  // 200ms步长
-            
-            // 简单的圆形路径模拟
-            current_x_ = 5.0 * cos(sim_time * 0.1);
-            current_y_ = 5.0 * sin(sim_time * 0.1);
-            current_yaw_ = sim_time * 0.1 + M_PI/2;
+            // 如果没有外部定位，基于地图中心初始化
+            if (!initialized_ && has_map_) {
+                current_x_ = current_map_.info.origin.position.x + 
+                            (current_map_.info.width * current_map_.info.resolution) / 2.0;
+                current_y_ = current_map_.info.origin.position.y + 
+                            (current_map_.info.height * current_map_.info.resolution) / 2.0;
+                current_yaw_ = 0.0;
+                initialized_ = true;
+                
+                ROS_INFO("🎯 Initialized vehicle at map center: (%.2f, %.2f)", current_x_, current_y_);
+            } else if (!has_map_) {
+                // 使用模拟运动
+                static double sim_time = 0.0;
+                sim_time += 0.2;
+                
+                current_x_ = 10.0 * cos(sim_time * 0.05);  // 更大的圆形路径
+                current_y_ = 10.0 * sin(sim_time * 0.05);
+                current_yaw_ = sim_time * 0.05 + M_PI/2;
+                
+                ROS_INFO_THROTTLE(2.0, "🚗 Simulated vehicle position: (%.2f, %.2f, %.1f°)", 
+                                 current_x_, current_y_, current_yaw_ * 180.0 / M_PI);
+            }
             
             x = current_x_;
             y = current_y_;
             yaw = current_yaw_;
             
-            ROS_DEBUG_THROTTLE(5.0, "Using simulated vehicle position: (%.2f, %.2f, %.2f)", x, y, yaw);
             return true;
         }
     }
@@ -416,80 +469,84 @@ private:
         path_pub_.publish(path_msg);
     }
 
-    // ========== 地图可视化 ==========
+    // ========== 修复：地图可视化显著优化 ==========
     void publishMapVisualization()
-        {
-            if (!has_map_) {
-                ROS_WARN_THROTTLE(2.0, "No map available for visualization");
-                return;
-            }
-            
-            ROS_INFO_THROTTLE(5.0, "Publishing map visualization...");
-            ROS_INFO_THROTTLE(5.0, "Map: %dx%d, resolution=%.3f, origin=(%.2f, %.2f)", 
-                    current_map_.info.width, current_map_.info.height, 
-                    current_map_.info.resolution,
-                    current_map_.info.origin.position.x, 
-                    current_map_.info.origin.position.y);
-            
-            visualization_msgs::Marker map_marker;
-            map_marker.header.frame_id = "map";
-            map_marker.header.stamp = ros::Time::now();
-            map_marker.ns = "occupancy_map";
-            map_marker.id = 0;
-            map_marker.type = visualization_msgs::Marker::CUBE_LIST;
-            map_marker.action = visualization_msgs::Marker::ADD;
+    {
+        if (!has_map_) {
+            ROS_WARN_THROTTLE(5.0, "No map available for visualization");
+            return;
+        }
+        
+        visualization_msgs::Marker map_marker;
+        map_marker.header.frame_id = "map";
+        map_marker.header.stamp = ros::Time::now();
+        map_marker.ns = "occupancy_map";
+        map_marker.id = 0;
+        map_marker.type = visualization_msgs::Marker::CUBE_LIST;
+        map_marker.action = visualization_msgs::Marker::ADD;
 
-            // 使用较大的立方体以便观察
-            map_marker.scale.x = current_map_.info.resolution;
-            map_marker.scale.y = current_map_.info.resolution;
-            map_marker.scale.z = 0.2; // 稍微高一些
+        // 增大立方体尺寸以便观察
+        map_marker.scale.x = current_map_.info.resolution * 2.0;  // 放大2倍
+        map_marker.scale.y = current_map_.info.resolution * 2.0;
+        map_marker.scale.z = 0.5; // 增加高度
 
-            // 降低采样率以减少计算量
-            int sample_rate = 10; // 每10个像素采样一次
-            int points_added = 0;
+        // 优化采样策略 - 降低采样率但确保覆盖
+        int sample_rate = std::max(1, (int)(current_map_.info.width / 100)); // 保证至少100个采样点
+        int points_added = 0;
+        int occupied_points = 0;
 
-            for (int y = 0; y < current_map_.info.height; y += sample_rate) {
-                for (int x = 0; x < current_map_.info.width; x += sample_rate) {
-                    int index = y * current_map_.info.width + x;
-                    if (index >= current_map_.data.size()) continue;
+        ROS_INFO_THROTTLE(10.0, "Map info: %dx%d, resolution=%.3f, origin=(%.2f,%.2f), sample_rate=%d", 
+                         current_map_.info.width, current_map_.info.height, current_map_.info.resolution,
+                         current_map_.info.origin.position.x, current_map_.info.origin.position.y, sample_rate);
 
-                    int8_t value = current_map_.data[index];
-                    
-                    // 只显示明确的占用和自由区域
-                    if (value < 0) continue; // 跳过未知区域
-                    
-                    geometry_msgs::Point point;
-                    point.x = current_map_.info.origin.position.x + x * current_map_.info.resolution;
-                    point.y = current_map_.info.origin.position.y + y * current_map_.info.resolution;
-                    point.z = 0.1;
+        for (int y = 0; y < current_map_.info.height; y += sample_rate) {
+            for (int x = 0; x < current_map_.info.width; x += sample_rate) {
+                int index = y * current_map_.info.width + x;
+                if (index >= current_map_.data.size()) continue;
 
-                    std_msgs::ColorRGBA color;
-                    if (value > 70) {
-                        // 占用区域 - 明亮红色
-                        color.r = 1.0; color.g = 0.0; color.b = 0.0; color.a = 1.0;
-                    } else if (value <= 30) {
-                        // 自由区域 - 明亮绿色
-                        color.r = 0.0; color.g = 1.0; color.b = 0.0; color.a = 0.6;
-                    } else {
-                        // 中间值 - 黄色
-                        color.r = 1.0; color.g = 1.0; color.b = 0.0; color.a = 0.8;
-                    }
+                int8_t value = current_map_.data[index];
+                
+                // 显示所有非未知区域
+                if (value < 0) continue; // 跳过未知区域
+                
+                geometry_msgs::Point point;
+                point.x = current_map_.info.origin.position.x + x * current_map_.info.resolution;
+                point.y = current_map_.info.origin.position.y + y * current_map_.info.resolution;
+                point.z = 0.25; // 抬高一些
 
-                    map_marker.points.push_back(point);
-                    map_marker.colors.push_back(color);
-                    points_added++;
+                std_msgs::ColorRGBA color;
+                if (value > 80) {
+                    // 高占用区域 - 亮红色
+                    color.r = 1.0; color.g = 0.0; color.b = 0.0; color.a = 1.0;
+                    occupied_points++;
+                } else if (value > 50) {
+                    // 中等占用 - 橙色
+                    color.r = 1.0; color.g = 0.5; color.b = 0.0; color.a = 0.8;
+                    occupied_points++;
+                } else if (value <= 20) {
+                    // 自由区域 - 绿色，但透明度低
+                    color.r = 0.0; color.g = 1.0; color.b = 0.0; color.a = 0.3;
+                } else {
+                    // 中间值 - 黄色
+                    color.r = 1.0; color.g = 1.0; color.b = 0.0; color.a = 0.6;
                 }
-            }
 
-            ROS_INFO_THROTTLE(5.0, "Map visualization: %d points added", points_added);
-            
-            if (points_added > 0) {
-                map_visualization_pub_.publish(map_marker);
-                ROS_INFO_THROTTLE(5.0, "Published map marker with %d cubes", points_added);
-            } else {
-                ROS_WARN_THROTTLE(5.0, "No valid map points to visualize");
+                map_marker.points.push_back(point);
+                map_marker.colors.push_back(color);
+                points_added++;
             }
         }
+
+        ROS_INFO_THROTTLE(10.0, "Map visualization: %d total points, %d occupied points", 
+                         points_added, occupied_points);
+        
+        if (points_added > 0) {
+            map_visualization_pub_.publish(map_marker);
+            ROS_INFO_THROTTLE(10.0, "✅ Published map visualization with %d cubes", points_added);
+        } else {
+            ROS_WARN_THROTTLE(5.0, "❌ No valid map points to visualize");
+        }
+    }
 
     void publishInflatedMap()
     {
@@ -532,7 +589,44 @@ private:
         inflated_map_pub_.publish(inflated_map);
     }
 
-    // ========== 路径可视化 ==========
+    // ========== 新增：车辆模型可视化 ==========
+    void publishVehicleModel()
+    {
+        visualization_msgs::Marker vehicle_marker;
+        vehicle_marker.header.frame_id = "base_link";  // 相对于车辆坐标系
+        vehicle_marker.header.stamp = ros::Time::now();
+        vehicle_marker.ns = "vehicle";
+        vehicle_marker.id = 0;
+        vehicle_marker.type = visualization_msgs::Marker::CUBE;
+        vehicle_marker.action = visualization_msgs::Marker::ADD;
+
+        // 车辆模型位置（在base_link中心）
+        vehicle_marker.pose.position.x = 0.0;
+        vehicle_marker.pose.position.y = 0.0;
+        vehicle_marker.pose.position.z = 0.5;
+        vehicle_marker.pose.orientation.w = 1.0;
+
+        // 车辆尺寸（根据接口文档）
+        vehicle_marker.scale.x = 4.4;  // 长度
+        vehicle_marker.scale.y = 1.8;  // 宽度
+        vehicle_marker.scale.z = 1.0;  // 高度
+
+        // 车辆颜色 - 根据状态变化
+        if (current_behavior_ == "STRAIGHT") {
+            vehicle_marker.color.r = 0.0; vehicle_marker.color.g = 0.8; vehicle_marker.color.b = 1.0;
+        } else if (current_behavior_ == "AVOIDANCE") {
+            vehicle_marker.color.r = 1.0; vehicle_marker.color.g = 0.6; vehicle_marker.color.b = 0.0;
+        } else if (current_behavior_ == "EMERGENCY_STOP") {
+            vehicle_marker.color.r = 1.0; vehicle_marker.color.g = 0.0; vehicle_marker.color.b = 0.0;
+        } else {
+            vehicle_marker.color.r = 0.5; vehicle_marker.color.g = 0.5; vehicle_marker.color.b = 0.5;
+        }
+        vehicle_marker.color.a = 0.8;
+
+        vehicle_model_pub_.publish(vehicle_marker);
+    }
+
+    // ========== 路径可视化优化 ==========
     void publishPathVisualization()
     {
         visualization_msgs::Marker path_marker;
@@ -543,7 +637,7 @@ private:
         path_marker.type = visualization_msgs::Marker::LINE_STRIP;
         path_marker.action = visualization_msgs::Marker::ADD;
 
-        path_marker.scale.x = 0.2;
+        path_marker.scale.x = 0.3;  // 增加线条粗细
 
         if (current_behavior_ == "STRAIGHT") {
             path_marker.color.r = 0.0; path_marker.color.g = 0.8; path_marker.color.b = 1.0;
@@ -552,37 +646,69 @@ private:
         } else if (current_behavior_ == "EMERGENCY_STOP") {
             path_marker.color.r = 1.0; path_marker.color.g = 0.0; path_marker.color.b = 0.0;
         }
-        path_marker.color.a = 0.9;
+        path_marker.color.a = 1.0;  // 完全不透明
 
         for (const auto& point : current_path_) {
             geometry_msgs::Point p;
             p.x = point.x;
             p.y = point.y;
-            p.z = 0.15;
+            p.z = 0.3;  // 抬高路径线
             path_marker.points.push_back(p);
         }
 
         path_visualization_pub_.publish(path_marker);
+        
+        // 额外发布路径点球体
+        visualization_msgs::Marker points_marker;
+        points_marker.header.frame_id = "map";
+        points_marker.header.stamp = ros::Time::now();
+        points_marker.ns = "path_points";
+        points_marker.id = 1;
+        points_marker.type = visualization_msgs::Marker::SPHERE_LIST;
+        points_marker.action = visualization_msgs::Marker::ADD;
+        
+        points_marker.scale.x = 0.4;
+        points_marker.scale.y = 0.4;
+        points_marker.scale.z = 0.4;
+        
+        for (size_t i = 0; i < current_path_.size(); ++i) {
+            geometry_msgs::Point p;
+            p.x = current_path_[i].x;
+            p.y = current_path_[i].y;
+            p.z = 0.5;
+            points_marker.points.push_back(p);
+            
+            std_msgs::ColorRGBA color;
+            if (current_path_[i].is_safe) {
+                color.r = 0.0; color.g = 1.0; color.b = 0.0; color.a = 0.8;
+            } else {
+                color.r = 1.0; color.g = 0.0; color.b = 0.0; color.a = 0.8;
+            }
+            points_marker.colors.push_back(color);
+        }
+        
+        path_visualization_pub_.publish(points_marker);
     }
 
     void publishBehaviorIndicator()
     {
         visualization_msgs::Marker indicator;
-        indicator.header.frame_id = "map";
+        indicator.header.frame_id = "base_link";  // 相对于车辆
         indicator.header.stamp = ros::Time::now();
         indicator.ns = "behavior_indicator";
         indicator.id = 0;
         indicator.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
         indicator.action = visualization_msgs::Marker::ADD;
 
-        indicator.pose.position.x = current_x_;
-        indicator.pose.position.y = current_y_;
-        indicator.pose.position.z = 2.0;
+        // 显示在车辆上方
+        indicator.pose.position.x = 0.0;
+        indicator.pose.position.y = 0.0;
+        indicator.pose.position.z = 3.0;  // 车辆上方3米
         indicator.pose.orientation.w = 1.0;
 
-        indicator.scale.z = 0.8;
+        indicator.scale.z = 1.0;  // 增大文字
 
-        std::string text = "PLANNING: " + current_behavior_;
+        std::string text = "🚗 PLANNING: " + current_behavior_;
         if (current_behavior_ == "STRAIGHT") {
             text += "\n➡️  Normal Driving";
             indicator.color.r = 0.0; indicator.color.g = 1.0; indicator.color.b = 0.0;
@@ -595,8 +721,12 @@ private:
         }
         indicator.color.a = 1.0;
 
-        text += "\nPath Points: " + std::to_string(current_path_.size());
-        text += "\nPos: (" + std::to_string((int)current_x_) + "," + std::to_string((int)current_y_) + ")";
+        text += "\n📍 Pos: (" + std::to_string((int)current_x_) + "," + std::to_string((int)current_y_) + ")";
+        text += "\n🎯 Points: " + std::to_string(current_path_.size());
+        
+        if (has_map_) {
+            text += "\n🗺️  Map: " + std::to_string(current_map_.info.width) + "x" + std::to_string(current_map_.info.height);
+        }
 
         indicator.text = text;
         behavior_indicator_pub_.publish(indicator);
@@ -609,20 +739,28 @@ int main(int argc, char** argv)
     
     PlanningNode planning_node;
     
-    ROS_INFO("===== Planning Node Ready =====");
-    ROS_INFO("Subscribed Topics:");
+    ROS_INFO("===== Enhanced Planning Node Ready =====");
+    ROS_INFO("📡 Subscribed Topics:");
     ROS_INFO("  - /decision/behavior_command");
     ROS_INFO("  - /perception/occupancy_grid");
-    ROS_INFO("Published Topics:");
+    ROS_INFO("📤 Published Topics:");
     ROS_INFO("  - /planning/trajectory");
     ROS_INFO("  - /planning/path");
     ROS_INFO("  - /planning/map_visualization");
     ROS_INFO("  - /planning/inflated_map");
     ROS_INFO("  - /planning/path_visualization");
     ROS_INFO("  - /planning/behavior_indicator");
-    ROS_INFO("================================");
+    ROS_INFO("  - /planning/vehicle_model");
+    ROS_INFO("🔧 Features:");
+    ROS_INFO("  ✅ RViz auto-follow via dynamic TF");
+    ROS_INFO("  ✅ Enhanced map visualization");
+    ROS_INFO("  ✅ Real-time vehicle model");
+    ROS_INFO("  ✅ Path safety indicators");
+    ROS_INFO("========================================");
     
     ros::spin();
     
     return 0;
 }
+
+    //
