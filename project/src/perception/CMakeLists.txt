@@ -22,10 +22,11 @@ catkin_package()
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
+  ${OCTOMAP_INCLUDE_DIRS}
 )
 
 add_executable(map_builder_node src/map_builder_node.cpp)
-target_link_libraries(map_builder_node ${catkin_LIBRARIES})
+target_link_libraries(map_builder_node ${catkin_LIBRARIES} ${OCTOMAP_LIBRARIES} )
 
 add_executable(depth_to_cloud_node src/depth_to_cloud_node.cpp)
 target_link_libraries(depth_to_cloud_node ${catkin_LIBRARIES})
