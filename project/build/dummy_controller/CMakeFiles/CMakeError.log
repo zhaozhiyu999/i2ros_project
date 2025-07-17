@@ -1,21 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/youran/Documents/introtoros_2025/project/build/dummy_controller/CMakeFiles/CMakeTmp
+Change Dir: /home/zzy/introtoros_2025-main-project/project/build/dummy_controller/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_5595a/fast && /usr/bin/make -f CMakeFiles/cmTC_5595a.dir/build.make CMakeFiles/cmTC_5595a.dir/build
-make[1]: Entering directory '/home/youran/Documents/introtoros_2025/project/build/dummy_controller/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_5595a.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_5595a.dir/src.c.o   -c /home/youran/Documents/introtoros_2025/project/build/dummy_controller/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_5595a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5595a.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_5595a.dir/src.c.o  -o cmTC_5595a 
-/usr/bin/ld: CMakeFiles/cmTC_5595a.dir/src.c.o: in function `main':
+Run Build Command(s):/usr/bin/make cmTC_d5dbd/fast && /usr/bin/make -f CMakeFiles/cmTC_d5dbd.dir/build.make CMakeFiles/cmTC_d5dbd.dir/build
+make[1]: 进入目录“/home/zzy/introtoros_2025-main-project/project/build/dummy_controller/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_d5dbd.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_d5dbd.dir/src.c.o   -c /home/zzy/introtoros_2025-main-project/project/build/dummy_controller/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d5dbd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5dbd.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_d5dbd.dir/src.c.o  -o cmTC_d5dbd 
+/usr/bin/ld: CMakeFiles/cmTC_d5dbd.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_5595a.dir/build.make:87: cmTC_5595a] Error 1
-make[1]: Leaving directory '/home/youran/Documents/introtoros_2025/project/build/dummy_controller/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_5595a/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_d5dbd.dir/build.make:87：cmTC_d5dbd] 错误 1
+make[1]: 离开目录“/home/zzy/introtoros_2025-main-project/project/build/dummy_controller/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_d5dbd/fast] 错误 2
 
 
 Source file was:
@@ -39,20 +39,20 @@ int main(void)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/youran/Documents/introtoros_2025/project/build/dummy_controller/CMakeFiles/CMakeTmp
+Change Dir: /home/zzy/introtoros_2025-main-project/project/build/dummy_controller/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_d9cb6/fast && /usr/bin/make -f CMakeFiles/cmTC_d9cb6.dir/build.make CMakeFiles/cmTC_d9cb6.dir/build
-make[1]: Entering directory '/home/youran/Documents/introtoros_2025/project/build/dummy_controller/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d9cb6.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d9cb6.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_d9cb6
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d9cb6.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_d9cb6.dir/CheckFunctionExists.c.o  -o cmTC_d9cb6  -lpthreads 
-/usr/bin/ld: cannot find -lpthreads
+Run Build Command(s):/usr/bin/make cmTC_69dd7/fast && /usr/bin/make -f CMakeFiles/cmTC_69dd7.dir/build.make CMakeFiles/cmTC_69dd7.dir/build
+make[1]: 进入目录“/home/zzy/introtoros_2025-main-project/project/build/dummy_controller/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_69dd7.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_69dd7.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_69dd7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69dd7.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_69dd7.dir/CheckFunctionExists.c.o  -o cmTC_69dd7  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_d9cb6.dir/build.make:87: cmTC_d9cb6] Error 1
-make[1]: Leaving directory '/home/youran/Documents/introtoros_2025/project/build/dummy_controller/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_d9cb6/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_69dd7.dir/build.make:87：cmTC_69dd7] 错误 1
+make[1]: 离开目录“/home/zzy/introtoros_2025-main-project/project/build/dummy_controller/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_69dd7/fast] 错误 2
 
 
 

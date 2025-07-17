@@ -9,6 +9,10 @@
           output="screen"
           required="true">
         
+        <!-- waypoints参数 -->
+        <param name="global_waypoints_file" value="$(find planning_package)/config/waypoints.json"/>
+        <param name="global_interp_ds" value="1.0"/>
+        <param name="local_lookahead_m" value="20.0"/>
         <!-- 基本规划参数 -->
         <param name="planning_frequency" value="10.0" />
         <param name="lookahead_distance" value="15.0" />

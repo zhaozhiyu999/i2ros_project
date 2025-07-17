@@ -1,4 +1,4 @@
-prefix=/home/youran/Documents/introtoros_2025/project/devel/.private/planning_package
+prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/planning_package
 
 Name: planning_package
 Description: Description of planning_package

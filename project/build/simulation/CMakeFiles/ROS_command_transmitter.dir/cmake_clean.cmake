@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/youran/Documents/introtoros_2025/project/devel/.private/simulation/lib/simulation/ROS_command_transmitter"
-  "/home/youran/Documents/introtoros_2025/project/devel/.private/simulation/lib/simulation/ROS_command_transmitter.pdb"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/simulation/ROS_command_transmitter"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/simulation/ROS_command_transmitter.pdb"
   "CMakeFiles/ROS_command_transmitter.dir/src/ROS_command_transmitter.cpp.o"
 )
 

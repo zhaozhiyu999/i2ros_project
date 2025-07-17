@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/youran/Documents/introtoros_2025/project/src/perception
+CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/perception
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/youran/Documents/introtoros_2025/project/build/perception
+CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/perception
 
 # Utility rule file for tf2_msgs_generate_messages_eus.
 
@@ -67,6 +67,6 @@ CMakeFiles/tf2_msgs_generate_messages_eus.dir/clean:
 .PHONY : CMakeFiles/tf2_msgs_generate_messages_eus.dir/clean
 
 CMakeFiles/tf2_msgs_generate_messages_eus.dir/depend:
-	cd /home/youran/Documents/introtoros_2025/project/build/perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Documents/introtoros_2025/project/src/perception /home/youran/Documents/introtoros_2025/project/src/perception /home/youran/Documents/introtoros_2025/project/build/perception /home/youran/Documents/introtoros_2025/project/build/perception /home/youran/Documents/introtoros_2025/project/build/perception/CMakeFiles/tf2_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zzy/introtoros_2025-main-project/project/build/perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/perception /home/zzy/introtoros_2025-main-project/project/src/perception /home/zzy/introtoros_2025-main-project/project/build/perception /home/zzy/introtoros_2025-main-project/project/build/perception /home/zzy/introtoros_2025-main-project/project/build/perception/CMakeFiles/tf2_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tf2_msgs_generate_messages_eus.dir/depend
 

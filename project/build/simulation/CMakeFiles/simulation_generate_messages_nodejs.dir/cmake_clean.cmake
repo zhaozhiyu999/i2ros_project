@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/youran/Documents/introtoros_2025/project/devel/.private/simulation/share/gennodejs/ros/simulation/msg/VehicleControl.js"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/share/gennodejs/ros/simulation/msg/VehicleControl.js"
   "CMakeFiles/simulation_generate_messages_nodejs"
 )
 

@@ -1,0 +1,21 @@
+[ 25%] Built target traffic_light_node
+[ 50%] Built target front_hazard_node
+[ 75%] Built target depth_to_cloud_node
+[100%] Built target map_builder_node
+[36mInstall the project...[0m
+-- Install configuration: "Release"
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/_setup_util.py
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/env.sh
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/setup.bash
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/local_setup.bash
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/setup.sh
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/local_setup.sh
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/setup.zsh
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/local_setup.zsh
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/setup.fish
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/local_setup.fish
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/.rosinstall
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/pkgconfig/perception.pc
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/perception/cmake/perceptionConfig.cmake
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/perception/cmake/perceptionConfig-version.cmake
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/perception/package.xml

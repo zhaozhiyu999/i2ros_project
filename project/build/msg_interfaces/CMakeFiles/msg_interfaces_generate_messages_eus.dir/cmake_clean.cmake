@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/youran/Documents/introtoros_2025/project/devel/.private/msg_interfaces/share/roseus/ros/msg_interfaces/manifest.l"
-  "/home/youran/Documents/introtoros_2025/project/devel/.private/msg_interfaces/share/roseus/ros/msg_interfaces/msg/Trajectory.l"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/share/roseus/ros/msg_interfaces/manifest.l"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/share/roseus/ros/msg_interfaces/msg/Trajectory.l"
   "CMakeFiles/msg_interfaces_generate_messages_eus"
 )
 

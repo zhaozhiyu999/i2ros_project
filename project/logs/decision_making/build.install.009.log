@@ -1,0 +1,33 @@
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[100%] Built target decision_node
+[36mInstall the project...[0m
+-- Install configuration: "Release"
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/_setup_util.py
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/env.sh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/setup.bash
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/local_setup.bash
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/setup.sh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/local_setup.sh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/setup.zsh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/local_setup.zsh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/setup.fish
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/local_setup.fish
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/.rosinstall
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/pkgconfig/decision_making.pc
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/decision_making/cmake/decision_makingConfig.cmake
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/decision_making/cmake/decision_makingConfig-version.cmake
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/decision_making/package.xml

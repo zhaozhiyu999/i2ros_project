@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/youran/Documents/introtoros_2025/project/src/perception
+CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/perception
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/youran/Documents/introtoros_2025/project/build/perception
+CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/perception
 
 # Utility rule file for actionlib_msgs_generate_messages_py.
 
@@ -67,6 +67,6 @@ CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean:
 .PHONY : CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
 
 CMakeFiles/actionlib_msgs_generate_messages_py.dir/depend:
-	cd /home/youran/Documents/introtoros_2025/project/build/perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Documents/introtoros_2025/project/src/perception /home/youran/Documents/introtoros_2025/project/src/perception /home/youran/Documents/introtoros_2025/project/build/perception /home/youran/Documents/introtoros_2025/project/build/perception /home/youran/Documents/introtoros_2025/project/build/perception/CMakeFiles/actionlib_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zzy/introtoros_2025-main-project/project/build/perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/perception /home/zzy/introtoros_2025-main-project/project/src/perception /home/zzy/introtoros_2025-main-project/project/build/perception /home/zzy/introtoros_2025-main-project/project/build/perception /home/zzy/introtoros_2025-main-project/project/build/perception/CMakeFiles/actionlib_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/actionlib_msgs_generate_messages_py.dir/depend
 

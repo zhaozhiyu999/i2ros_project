@@ -14,7 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf2_geometry_msgs
   msg_interfaces
 )
-
+find_package(nlohmann_json 3.2.0 REQUIRED)
 catkin_package(
   CATKIN_DEPENDS 
     roscpp 
@@ -30,12 +30,13 @@ catkin_package(
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${nlohmann_json_INCLUDE_DIRS}
 )
 
 # 智能路径规划节点
 add_executable(planning_node src/planning_node.cpp)
 add_dependencies(planning_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(planning_node ${catkin_LIBRARIES})
+target_link_libraries(planning_node ${catkin_LIBRARIES} nlohmann_json::nlohmann_json)
 
 # 轨迹可视化节点
 add_executable(trajectory_visualizer src/trajectory_visualizer.cpp)

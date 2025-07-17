@@ -1,0 +1,107 @@
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_cpp
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target sensor_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_eus
+[ 32%] Built target libsocket
+[ 32%] Built target sensor_msgs_generate_messages_nodejs
+[ 32%] Built target sensor_msgs_generate_messages_eus
+[ 32%] Built target sensor_msgs_generate_messages_lisp
+[ 32%] Built target geometry_msgs_generate_messages_py
+[ 32%] Built target tf2_msgs_generate_messages_eus
+[ 32%] Built target sensor_msgs_generate_messages_py
+[ 32%] Built target roscpp_generate_messages_lisp
+[ 32%] Built target actionlib_generate_messages_lisp
+[ 32%] Built target rosgraph_msgs_generate_messages_py
+[ 32%] Built target geometry_msgs_generate_messages_cpp
+[ 32%] Built target tf2_msgs_generate_messages_py
+[ 32%] Built target geometry_msgs_generate_messages_nodejs
+[ 32%] Built target std_msgs_generate_messages_cpp
+[ 32%] Built target rosgraph_msgs_generate_messages_lisp
+[ 32%] Built target tf_generate_messages_eus
+[ 32%] Built target tf2_msgs_generate_messages_cpp
+[ 32%] Built target roscpp_generate_messages_nodejs
+[ 32%] Built target geometry_msgs_generate_messages_lisp
+[ 32%] Built target tf_generate_messages_cpp
+[ 32%] Built target tf_generate_messages_lisp
+[ 32%] Built target tf_generate_messages_nodejs
+[ 32%] Built target rosgraph_msgs_generate_messages_cpp
+[ 32%] Built target actionlib_generate_messages_eus
+[ 32%] Built target actionlib_msgs_generate_messages_cpp
+[ 32%] Built target actionlib_generate_messages_nodejs
+[ 32%] Built target actionlib_generate_messages_py
+[ 32%] Built target tf_generate_messages_py
+[ 32%] Built target std_msgs_generate_messages_eus
+[ 32%] Built target actionlib_msgs_generate_messages_nodejs
+[ 32%] Built target actionlib_msgs_generate_messages_lisp
+[ 32%] Built target tf2_msgs_generate_messages_lisp
+[ 32%] Built target tf2_msgs_generate_messages_nodejs
+[ 40%] Built target ROS_command_transmitter
+[ 48%] Built target tcpstreamreader
+[ 56%] Built target tcpimage
+[ 64%] Built target unity_TCP_stream_receiver
+[ 64%] Built target _simulation_generate_messages_check_deps_VehicleControl
+[ 68%] Built target simulation_generate_messages_nodejs
+[ 72%] Built target simulation_generate_messages_cpp
+[ 80%] Built target simulation_generate_messages_py
+[ 84%] Built target simulation_generate_messages_lisp
+[ 92%] Built target simulation_generate_messages_eus
+[ 92%] Built target simulation_generate_messages
+[100%] Built target JSON_param_reader
+[36mInstall the project...[0m
+-- Install configuration: "Release"
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/_setup_util.py
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/env.sh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/setup.bash
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/local_setup.bash
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/setup.sh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/local_setup.sh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/setup.zsh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/local_setup.zsh
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/setup.fish
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/local_setup.fish
+-- Installing: /home/zzy/introtoros_2025-main-project/project/install/.rosinstall
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/simulation/msg/VehicleControl.msg
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/simulation/cmake/simulation-msg-paths.cmake
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/include/simulation
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/include/simulation/VehicleControl.h
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/roseus/ros/simulation
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/roseus/ros/simulation/msg
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/roseus/ros/simulation/msg/VehicleControl.l
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/roseus/ros/simulation/manifest.l
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/common-lisp/ros/simulation
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/common-lisp/ros/simulation/msg
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/common-lisp/ros/simulation/msg/_package_VehicleControl.lisp
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/common-lisp/ros/simulation/msg/_package.lisp
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/common-lisp/ros/simulation/msg/simulation-msg.asd
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/common-lisp/ros/simulation/msg/VehicleControl.lisp
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/gennodejs/ros/simulation
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/gennodejs/ros/simulation/_index.js
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/gennodejs/ros/simulation/msg
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/gennodejs/ros/simulation/msg/_index.js
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/gennodejs/ros/simulation/msg/VehicleControl.js
+Listing '/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/python3/dist-packages/simulation'...
+Listing '/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/python3/dist-packages/simulation/msg'...
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/__init__.py
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/msg
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/msg/__init__.py
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/msg/_VehicleControl.py
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/msg/__pycache__
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/msg/__pycache__/__init__.cpython-38.pyc
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/msg/__pycache__/_VehicleControl.cpython-38.pyc
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/__pycache__
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/python3/dist-packages/simulation/__pycache__/__init__.cpython-38.pyc
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/lib/pkgconfig/simulation.pc
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/simulation/cmake/simulation-msg-extras.cmake
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/simulation/cmake/simulationConfig.cmake
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/simulation/cmake/simulationConfig-version.cmake
+-- Up-to-date: /home/zzy/introtoros_2025-main-project/project/install/share/simulation/package.xml

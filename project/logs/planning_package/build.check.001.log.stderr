@@ -1,0 +1,8 @@
+[31m[1mCMake Error[0m at /home/zzy/introtoros_2025-main-project/project/src/planning_package/CMakeLists.txt:37 (add_executable):
+  Target "planning_node" links to target "nlohmann_json::nlohmann_json" but
+  the target was not found.  Perhaps a find_package() call is missing for an
+  IMPORTED target, or an ALIAS target is missing?
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+make: *** [Makefile:1108：cmake_check_build_system] 错误 1

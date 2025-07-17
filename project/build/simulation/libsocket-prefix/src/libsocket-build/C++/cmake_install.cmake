@@ -1,8 +1,8 @@
-# Install script for directory: /home/youran/Documents/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/C++
+# Install script for directory: /home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/C++
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/youran/Documents/introtoros_2025/project/devel/.private/simulation")
+  set(CMAKE_INSTALL_PREFIX "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,7 +44,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsocket++.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/youran/Documents/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-build/C++/libsocket++.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-build/C++/libsocket++.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsocket++.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsocket++.so")
     if(CMAKE_INSTALL_DO_STRIP)

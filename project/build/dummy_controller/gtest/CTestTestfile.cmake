@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
 # Source directory: /usr/src/googletest
-# Build directory: /home/youran/Documents/introtoros_2025/project/build/dummy_controller/gtest
+# Build directory: /home/zzy/introtoros_2025-main-project/project/build/dummy_controller/gtest
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
