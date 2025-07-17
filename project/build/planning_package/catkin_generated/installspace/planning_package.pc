@@ -1,0 +1,8 @@
+prefix=/home/youran/Documents/introtoros_2025/project/install
+
+Name: planning_package
+Description: Description of planning_package
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp std_msgs geometry_msgs nav_msgs visualization_msgs tf2 tf2_ros tf2_geometry_msgs msg_interfaces

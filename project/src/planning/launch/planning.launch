@@ -1,3 +1,0 @@
-<launch>
- <node pkg="planning" type="trajectory_node.py" name="trajectory_planner" output="screen"/>
-</launch>

@@ -1,0 +1,8 @@
+prefix=/home/youran/Documents/introtoros_2025/project/install
+
+Name: perception
+Description: Description of perception
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

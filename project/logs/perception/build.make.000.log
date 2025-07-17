@@ -1,0 +1,16 @@
+[35m[1mScanning dependencies of target traffic_light_node[0m
+[ 12%] [32mBuilding CXX object CMakeFiles/traffic_light_node.dir/src/traffic_light_node.cpp.o[0m
+[ 25%] [32m[1mLinking CXX executable /home/youran/Documents/introtoros_2025/project/devel/.private/perception/lib/perception/traffic_light_node[0m
+[ 25%] Built target traffic_light_node
+[35m[1mScanning dependencies of target front_hazard_node[0m
+[ 37%] [32mBuilding CXX object CMakeFiles/front_hazard_node.dir/src/front_hazard_node.cpp.o[0m
+[ 50%] [32m[1mLinking CXX executable /home/youran/Documents/introtoros_2025/project/devel/.private/perception/lib/perception/front_hazard_node[0m
+[ 50%] Built target front_hazard_node
+[35m[1mScanning dependencies of target depth_to_cloud_node[0m
+[35m[1mScanning dependencies of target map_builder_node[0m
+[ 62%] [32mBuilding CXX object CMakeFiles/map_builder_node.dir/src/map_builder_node.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/depth_to_cloud_node.dir/src/depth_to_cloud_node.cpp.o[0m
+[ 87%] [32m[1mLinking CXX executable /home/youran/Documents/introtoros_2025/project/devel/.private/perception/lib/perception/map_builder_node[0m
+[ 87%] Built target map_builder_node
+[100%] [32m[1mLinking CXX executable /home/youran/Documents/introtoros_2025/project/devel/.private/perception/lib/perception/depth_to_cloud_node[0m
+[100%] Built target depth_to_cloud_node

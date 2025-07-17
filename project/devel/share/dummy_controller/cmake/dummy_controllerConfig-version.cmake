@@ -1,0 +1,1 @@
+/home/youran/Documents/introtoros_2025/project/devel/.private/dummy_controller/share/dummy_controller/cmake/dummy_controllerConfig-version.cmake

@@ -1,83 +1,142 @@
 <launch>
     <!-- ========== 启动参数 ========== -->
-    <arg name="enable_rviz" default="true" />
     <arg name="debug" default="false" />
-    <arg name="rviz_config" default="$(find planning_package)/rviz/planning_viz.rviz" />
     
-    <!-- ========== 响应式规划节点 ========== -->
+    <!-- ========== 车辆跟随规划节点 ========== -->
     <node name="planning_node" 
           pkg="planning_package" 
           type="planning_node" 
           output="screen"
           required="true">
         
-        <!-- 规划参数 -->
+        <!-- 基本规划参数 -->
         <param name="planning_frequency" value="10.0" />
-        <param name="lookahead_distance" value="12.0" />
-        <param name="max_speed" value="3.5" />
-        <param name="emergency_decel" value="6.0" />
-        <param name="vehicle_width" value="1.8" />
-        <param name="safety_margin" value="0.5" />
-        <param name="trajectory_points" value="10" />
-        <param name="avoidance_lateral_distance" value="2.5" />
-        <param name="stopping_distance" value="8.0" />
+        <param name="lookahead_distance" value="15.0" />
+        <param name="trajectory_points" value="20" />
+        <param name="default_speed" value="5.0" />
+        <param name="emergency_decel" value="3.0" />
+        
+        <!-- 车辆参数（根据项目文档） -->
+        <param name="vehicle_length" value="4.4" />
+        <param name="vehicle_width" value="2.0" />
+        <param name="vehicle_height" value="1.27" />
+        
+        <!-- 轨迹记录参数 -->
+        <param name="trail_max_points" value="200" />
+        <param name="trail_update_distance" value="0.5" />
+        
+        <!-- 可视化参数 -->
+        <param name="path_line_width" value="0.3" />
+        <param name="path_point_size" value="0.4" />
+        <param name="text_size" value="0.8" />
     </node>
-    
-    <!-- ========== RViz可视化 ========== -->
-    <group if="$(arg enable_rviz)">
-        <node name="rviz" 
-              pkg="rviz" 
-              type="rviz" 
-              output="screen"
-              required="false"
-              args="-f base_link -d $(arg rviz_config)" />
-    </group>
     
     <!-- ========== 调试工具（可选） ========== -->
     <group if="$(arg debug)">
-        <!-- 话题监控 -->
-        <node name="topic_monitor" 
+        <!-- 话题频率监控 -->
+        <node name="trajectory_monitor" 
               pkg="rostopic" 
               type="rostopic" 
-              args="hz /planning/trajectory /planning/path" 
+              args="hz /planning/trajectory" 
               output="screen" />
         
-        <!-- TF监控 -->
-        <node name="tf_monitor" 
-              pkg="tf2_ros" 
-              type="tf2_echo" 
-              args="map base_link" 
-              output="screen" />
-        
-        <!-- 测试紧急停车指令 -->
-        <node name="emergency_test" 
+        <node name="path_monitor" 
               pkg="rostopic" 
               type="rostopic" 
-              args="pub -r 0.1 /decision/emergency_stop std_msgs/Bool 'data: false'" 
+              args="hz /planning/path" 
+              output="screen" />
+        
+        <node name="path_vis_monitor" 
+              pkg="rostopic" 
+              type="rostopic" 
+              args="hz /planning/planned_path_visualization" 
+              output="screen" />
+        
+        <node name="vehicle_pose_monitor" 
+              pkg="rostopic" 
+              type="rostopic" 
+              args="hz /vehicle/pose" 
+              output="screen" />
+        
+        <!-- 行为指令监控 -->
+        <node name="behavior_monitor" 
+              pkg="rostopic" 
+              type="rostopic" 
+              args="echo /decision/behavior_command" 
+              output="screen" />
+              
+        <node name="emergency_monitor" 
+              pkg="rostopic" 
+              type="rostopic" 
+              args="echo /decision/emergency_stop" 
+              output="screen" />
+        
+        <!-- 测试避让指令发布 -->
+        <node name="test_avoid_left" 
+              pkg="rostopic" 
+              type="rostopic" 
+              args="pub -r 0.1 /decision/behavior_command std_msgs/String 'data: avoid_left'" 
+              output="screen" 
+              if="false" />  <!-- 默认关闭，手动设置为true来测试 -->
+        
+        <!-- 测试紧急停车指令发布 -->
+        <node name="emergency_test_publisher" 
+              pkg="rostopic" 
+              type="rostopic" 
+              args="pub -r 1 /decision/emergency_stop std_msgs/Bool 'data: false'" 
               output="screen" />
     </group>
     
-    <!-- ========== 参数配置 ========== -->
+    <!-- ========== 规划参数配置 ========== -->
     <rosparam>
-        # 规划节点参数
-        planning_node:
-            # 行为检测参数
-            obstacle_detection:
-                front_check_distance: 6.0
-                lateral_check_width: 2.8
-                obstacle_threshold: 70
+        # 车辆跟随规划节点参数
+        vehicle_following_planning_node:
+            # 路径生成参数
+            path_generation:
+                step_distance_ratio: 0.05  # lookahead_distance的分割比例
+                min_path_length: 8.0       # 最小路径长度
+                max_path_length: 25.0      # 最大路径长度
+                curve_smoothing: 2.0       # 路径平滑因子
             
-            # 避障参数
-            avoidance:
-                s_curve_ratio_start: 0.3
-                s_curve_ratio_end: 0.7
-                speed_reduction_factor: 0.7
+            # 速度控制参数
+            speed_control:
+                max_speed: 8.0             # 最大速度 (m/s)
+                min_speed: 0.0             # 最小速度 (m/s)
+                cruise_speed: 5.0          # 巡航速度 (m/s)
+                red_light_speed: 2.5       # 红灯减速 (m/s)
+                hazard_speed: 0.0          # 危险减速 (m/s)
             
-            # 紧急制动参数
-            emergency_brake:
-                max_deceleration: 6.0
-                speed_reduction_factor: 2.5
-                min_brake_distance: 2.0
+            # 紧急停车参数
+            emergency_stop:
+                reaction_time: 0.1         # 反应时间 (s)
+                safety_buffer: 2.0         # 安全缓冲距离 (m)
+                decel_rate: 3.0           # 减速率
+                stop_time_horizon: 2.0     # 停车时间范围 (s)
+            
+            # 轨迹记录参数
+            trail_recording:
+                max_trail_age: 60.0        # 最大轨迹保存时间 (s)
+                trail_fade_effect: true    # 轨迹渐变效果
+                trail_color_speed: true    # 根据速度着色
+            
+            # 可视化设置
+            visualization:
+                enable_planned_path: true   # 启用前方路径显示
+                enable_vehicle_trail: true  # 启用车辆轨迹显示
+                enable_speed_colors: true   # 启用速度颜色编码
+                enable_info_display: true   # 启用信息显示
+                marker_lifetime: 0.2        # 标记生存时间 (s)
     </rosparam>
+    
+    <!-- ========== 话题重映射 ========== -->
+    <!-- 输入话题（订阅） -->
+    <remap from="/vehicle/pose" to="/vehicle/pose" />
+    <remap from="/vehicle/odometry" to="/vehicle/odometry" />
+    <remap from="/decision/behavior_command" to="/decision/behavior_command" />
+    <remap from="/decision/emergency_stop" to="/decision/emergency_stop" />
+    
+    <!-- 输出话题（发布给控制层和可视化） -->
+    <remap from="/planning/trajectory" to="/planning/trajectory" />
+    <remap from="/planning/path" to="/planning/path" />
     
 </launch>

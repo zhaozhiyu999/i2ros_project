@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>decision_making</name>
+  <version>0.1.0</version>
+  <description>Decision-making node: red-light stop and NPC hard-brake stop</description>
+
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>BSD</license>
+
+  <!-- build tool -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- run- & build-time deps -->
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+
+  <!-- 若以后要在决策层发布 Twist，可解开 -->
+  <!-- <depend>geometry_msgs</depend> -->
+
+  <export/>
+</package>

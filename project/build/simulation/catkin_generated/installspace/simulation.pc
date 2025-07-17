@@ -1,0 +1,8 @@
+prefix=/home/youran/Documents/introtoros_2025/project/install
+
+Name: simulation
+Description: Description of simulation
+Version: 0.1.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

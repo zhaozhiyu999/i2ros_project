@@ -12,6 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   image_transport
   tf2_ros
   image_geometry
+  octomap_ros
+  octomap_msgs
 )
 
 find_package(OpenCV REQUIRED)

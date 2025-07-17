@@ -1,0 +1,1 @@
+/home/youran/Documents/introtoros_2025/project/devel/.private/catkin_tools_prebuild/setup.bash

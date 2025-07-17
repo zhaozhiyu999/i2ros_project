@@ -1,0 +1,7 @@
+[01m[K/home/youran/Documents/introtoros_2025/project/src/perception/src/map_builder_node.cpp:[m[K In member function ‘[01m[Kvoid EnhancedMapBuilder::processDepthData(const CvImagePtr&, const TransformStamped&)[m[K’:
+[01m[K/home/youran/Documents/introtoros_2025/project/src/perception/src/map_builder_node.cpp:216:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass octomap::Pointcloud[m[K’ has no member named ‘[01m[Kempty[m[K’
+  216 |         if (!octo_cloud.[01;31m[Kempty[m[K()) {
+      |                         [01;31m[K^~~~~[m[K
+make[2]: *** [CMakeFiles/map_builder_node.dir/build.make:63: CMakeFiles/map_builder_node.dir/src/map_builder_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:2259: CMakeFiles/map_builder_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

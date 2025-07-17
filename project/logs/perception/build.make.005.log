@@ -1,0 +1,7 @@
+[ 25%] Built target traffic_light_node
+[ 50%] Built target front_hazard_node
+[ 75%] Built target depth_to_cloud_node
+[35m[1mScanning dependencies of target map_builder_node[0m
+[ 87%] [32mBuilding CXX object CMakeFiles/map_builder_node.dir/src/map_builder_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/youran/Documents/introtoros_2025/project/devel/.private/perception/lib/perception/map_builder_node[0m
+[100%] Built target map_builder_node

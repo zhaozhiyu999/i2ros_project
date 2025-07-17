@@ -1,0 +1,1 @@
+/home/youran/Documents/introtoros_2025/project/devel/.private/msg_interfaces/share/gennodejs/ros/msg_interfaces/msg/_index.js
