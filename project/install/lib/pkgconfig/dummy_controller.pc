@@ -1,8 +1,0 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/install
-
-Name: dummy_controller
-Description: Description of dummy_controller
-Version: 0.0.6657
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: simulation roscpp std_msgs

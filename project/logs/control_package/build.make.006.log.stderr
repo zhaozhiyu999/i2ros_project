@@ -1,0 +1,7 @@
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:7:10:[m[K [01;31m[Kfatal error: [m[Ktf2/LinearMath/Quaternio#include <ros/ros.h: No such file or directory
+    7 | #include [01;31m[K<tf2/LinearMath/Quaternio#include <ros/ros.h>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/control_node.dir/build.make:63: CMakeFiles/control_node.dir/src/control_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:995: CMakeFiles/control_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

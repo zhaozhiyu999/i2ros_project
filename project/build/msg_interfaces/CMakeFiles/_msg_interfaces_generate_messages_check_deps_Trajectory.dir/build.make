@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/msg_interfaces
+CMAKE_SOURCE_DIR = /home/youran/Desktop/introtoros_2025/project/src/msg_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces
+CMAKE_BINARY_DIR = /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces
 
 # Utility rule file for _msg_interfaces_generate_messages_check_deps_Trajectory.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/msg_inte
 include CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory.dir/progress.make
 
 CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory:
-	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py msg_interfaces /home/zzy/introtoros_2025-main-project/project/src/msg_interfaces/msg/Trajectory.msg geometry_msgs/Quaternion:geometry_msgs/Point:std_msgs/Header:geometry_msgs/Pose
+	catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py msg_interfaces /home/youran/Desktop/introtoros_2025/project/src/msg_interfaces/msg/Trajectory.msg geometry_msgs/Point:geometry_msgs/Quaternion:geometry_msgs/Pose:std_msgs/Header
 
 _msg_interfaces_generate_messages_check_deps_Trajectory: CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory
 _msg_interfaces_generate_messages_check_deps_Trajectory: CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory.dir/clean:
 .PHONY : CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory.dir/clean
 
 CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory.dir/depend:
-	cd /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/msg_interfaces /home/zzy/introtoros_2025-main-project/project/src/msg_interfaces /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces/CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Desktop/introtoros_2025/project/src/msg_interfaces /home/youran/Desktop/introtoros_2025/project/src/msg_interfaces /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces/CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/_msg_interfaces_generate_messages_check_deps_Trajectory.dir/depend
 

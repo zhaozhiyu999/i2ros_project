@@ -1,8 +1,8 @@
-# Install script for directory: /home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers
+# Install script for directory: /home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation")
+  set(CMAKE_INSTALL_PREFIX "/home/youran/Desktop/introtoros_2025/project/devel/.private/simulation")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,28 +39,28 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/libsocket" TYPE FILE FILES
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixdgram.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./exception.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetclientdgram.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./libinetsocket.h"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixserverstream.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./dgramclient.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./streamclient.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetserverstream.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixclientdgram.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./socket.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetbase.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetserverdgram.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixclientstream.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./libunixsocket.h"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./select.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetclientstream.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixbase.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixserverdgram.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetdgram.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./dgramoverstream.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./framing.hpp"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers/./epoll.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixdgram.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./exception.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetclientdgram.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./libinetsocket.h"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixserverstream.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./dgramclient.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./streamclient.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetserverstream.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixclientdgram.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./socket.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetbase.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetserverdgram.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixclientstream.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./libunixsocket.h"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./select.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetclientstream.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixbase.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./unixserverdgram.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./inetdgram.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./dgramoverstream.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./framing.hpp"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers/./epoll.hpp"
     )
 endif()
 

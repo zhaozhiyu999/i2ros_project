@@ -208,12 +208,20 @@ struct Printer< ::simulation::VehicleControl_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::simulation::VehicleControl_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "Throttle: ";
     Printer<float>::stream(s, indent + "  ", v.Throttle);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "Steering: ";
     Printer<float>::stream(s, indent + "  ", v.Steering);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "Brake: ";
     Printer<float>::stream(s, indent + "  ", v.Brake);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "Reserved: ";
     Printer<float>::stream(s, indent + "  ", v.Reserved);
   }

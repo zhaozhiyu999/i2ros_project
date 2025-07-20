@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/share/common-lisp/ros/simulation/msg/VehicleControl.lisp"
+  "/home/youran/Desktop/introtoros_2025/project/devel/.private/simulation/share/common-lisp/ros/simulation/msg/VehicleControl.lisp"
   "CMakeFiles/simulation_generate_messages_lisp"
 )
 

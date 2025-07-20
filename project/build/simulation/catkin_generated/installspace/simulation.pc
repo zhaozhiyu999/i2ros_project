@@ -1,4 +1,4 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/install
+prefix=/home/youran/Desktop/introtoros_2025/project/install
 
 Name: simulation
 Description: Description of simulation

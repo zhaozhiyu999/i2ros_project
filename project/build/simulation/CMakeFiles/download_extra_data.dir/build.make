@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/simulation
+CMAKE_SOURCE_DIR = /home/youran/Desktop/introtoros_2025/project/src/simulation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/simulation
+CMAKE_BINARY_DIR = /home/youran/Desktop/introtoros_2025/project/build/simulation
 
 # Utility rule file for download_extra_data.
 
@@ -67,6 +67,6 @@ CMakeFiles/download_extra_data.dir/clean:
 .PHONY : CMakeFiles/download_extra_data.dir/clean
 
 CMakeFiles/download_extra_data.dir/depend:
-	cd /home/zzy/introtoros_2025-main-project/project/build/simulation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/simulation /home/zzy/introtoros_2025-main-project/project/src/simulation /home/zzy/introtoros_2025-main-project/project/build/simulation /home/zzy/introtoros_2025-main-project/project/build/simulation /home/zzy/introtoros_2025-main-project/project/build/simulation/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/youran/Desktop/introtoros_2025/project/build/simulation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Desktop/introtoros_2025/project/src/simulation /home/youran/Desktop/introtoros_2025/project/src/simulation /home/youran/Desktop/introtoros_2025/project/build/simulation /home/youran/Desktop/introtoros_2025/project/build/simulation /home/youran/Desktop/introtoros_2025/project/build/simulation/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/download_extra_data.dir/depend
 

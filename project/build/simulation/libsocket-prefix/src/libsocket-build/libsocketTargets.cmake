@@ -51,7 +51,7 @@ add_library(socket_int STATIC IMPORTED)
 set_property(TARGET socket++ APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(socket++ PROPERTIES
   IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "socket_int"
-  IMPORTED_LOCATION_RELEASE "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-build/C++/libsocket++.so"
+  IMPORTED_LOCATION_RELEASE "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-build/C++/libsocket++.so"
   IMPORTED_SONAME_RELEASE "libsocket++.so"
   )
 
@@ -59,7 +59,7 @@ set_target_properties(socket++ PROPERTIES
 set_property(TARGET socket_int APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(socket_int PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C"
-  IMPORTED_LOCATION_RELEASE "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-build/C/libsocket_int.a"
+  IMPORTED_LOCATION_RELEASE "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-build/C/libsocket_int.a"
   )
 
 # This file does not depend on other imported targets which have

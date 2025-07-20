@@ -7,10 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/zzy/introtoros_2025-main-project/project/devel/.private/catkin_tools_prebuild:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH='/home/zzy/ros_ws/devel/lib:/opt/ros/noetic/lib'
-export PKG_CONFIG_PATH='/home/zzy/ros_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig'
-export PWD='/home/zzy/introtoros_2025-main-project/project/build/catkin_tools_prebuild'
-export PYTHONPATH='/opt/ros/noetic/lib/python3/dist-packages'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/zzy/introtoros_2025-main-project/project/devel/.private/catkin_tools_prebuild/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/zzy/introtoros_2025-main-project/project/build/catkin_tools_prebuild:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/youran/Desktop/introtoros_2025/project/devel/.private/catkin_tools_prebuild:$CMAKE_PREFIX_PATH"
+export PWD='/home/youran/Desktop/introtoros_2025/project/build/catkin_tools_prebuild'
+export ROSLISP_PACKAGE_DIRECTORIES='/home/youran/Desktop/introtoros_2025/project/devel/.private/catkin_tools_prebuild/share/common-lisp'
+export ROS_PACKAGE_PATH="/home/youran/Desktop/introtoros_2025/project/build/catkin_tools_prebuild:$ROS_PACKAGE_PATH"

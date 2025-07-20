@@ -1,8 +1,8 @@
-# Install script for directory: /home/zzy/introtoros_2025-main-project/project/src/simulation
+# Install script for directory: /home/youran/Desktop/introtoros_2025/project/src/simulation
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/zzy/introtoros_2025-main-project/project/install")
+  set(CMAKE_INSTALL_PREFIX "/home/youran/Desktop/introtoros_2025/project/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -49,155 +49,155 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zzy/introtoros_2025-main-project/project/install/_setup_util.py")
+   "/home/youran/Desktop/introtoros_2025/project/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zzy/introtoros_2025-main-project/project/install" TYPE PROGRAM FILES "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/home/youran/Desktop/introtoros_2025/project/install" TYPE PROGRAM FILES "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zzy/introtoros_2025-main-project/project/install/env.sh")
+   "/home/youran/Desktop/introtoros_2025/project/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zzy/introtoros_2025-main-project/project/install" TYPE PROGRAM FILES "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/home/youran/Desktop/introtoros_2025/project/install" TYPE PROGRAM FILES "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/env.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zzy/introtoros_2025-main-project/project/install/setup.bash;/home/zzy/introtoros_2025-main-project/project/install/local_setup.bash")
+   "/home/youran/Desktop/introtoros_2025/project/install/setup.bash;/home/youran/Desktop/introtoros_2025/project/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zzy/introtoros_2025-main-project/project/install" TYPE FILE FILES
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/setup.bash"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/local_setup.bash"
+file(INSTALL DESTINATION "/home/youran/Desktop/introtoros_2025/project/install" TYPE FILE FILES
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/setup.bash"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/local_setup.bash"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zzy/introtoros_2025-main-project/project/install/setup.sh;/home/zzy/introtoros_2025-main-project/project/install/local_setup.sh")
+   "/home/youran/Desktop/introtoros_2025/project/install/setup.sh;/home/youran/Desktop/introtoros_2025/project/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zzy/introtoros_2025-main-project/project/install" TYPE FILE FILES
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/setup.sh"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/local_setup.sh"
+file(INSTALL DESTINATION "/home/youran/Desktop/introtoros_2025/project/install" TYPE FILE FILES
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/setup.sh"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/local_setup.sh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zzy/introtoros_2025-main-project/project/install/setup.zsh;/home/zzy/introtoros_2025-main-project/project/install/local_setup.zsh")
+   "/home/youran/Desktop/introtoros_2025/project/install/setup.zsh;/home/youran/Desktop/introtoros_2025/project/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zzy/introtoros_2025-main-project/project/install" TYPE FILE FILES
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/setup.zsh"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/local_setup.zsh"
+file(INSTALL DESTINATION "/home/youran/Desktop/introtoros_2025/project/install" TYPE FILE FILES
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/setup.zsh"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/local_setup.zsh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zzy/introtoros_2025-main-project/project/install/setup.fish;/home/zzy/introtoros_2025-main-project/project/install/local_setup.fish")
+   "/home/youran/Desktop/introtoros_2025/project/install/setup.fish;/home/youran/Desktop/introtoros_2025/project/install/local_setup.fish")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zzy/introtoros_2025-main-project/project/install" TYPE FILE FILES
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/setup.fish"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/local_setup.fish"
+file(INSTALL DESTINATION "/home/youran/Desktop/introtoros_2025/project/install" TYPE FILE FILES
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/setup.fish"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/local_setup.fish"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zzy/introtoros_2025-main-project/project/install/.rosinstall")
+   "/home/youran/Desktop/introtoros_2025/project/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zzy/introtoros_2025-main-project/project/install" TYPE FILE FILES "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/home/youran/Desktop/introtoros_2025/project/install" TYPE FILE FILES "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/.rosinstall")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation/msg" TYPE FILE FILES "/home/zzy/introtoros_2025-main-project/project/src/simulation/msg/VehicleControl.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation/msg" TYPE FILE FILES "/home/youran/Desktop/introtoros_2025/project/src/simulation/msg/VehicleControl.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation/cmake" TYPE FILE FILES "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/simulation-msg-paths.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation/cmake" TYPE FILE FILES "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/simulation-msg-paths.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/include/simulation")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/youran/Desktop/introtoros_2025/project/devel/.private/simulation/include/simulation")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/share/roseus/ros/simulation")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/youran/Desktop/introtoros_2025/project/devel/.private/simulation/share/roseus/ros/simulation")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/share/common-lisp/ros/simulation")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/youran/Desktop/introtoros_2025/project/devel/.private/simulation/share/common-lisp/ros/simulation")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/share/gennodejs/ros/simulation")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/youran/Desktop/introtoros_2025/project/devel/.private/simulation/share/gennodejs/ros/simulation")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  execute_process(COMMAND "/usr/bin/python3" -m compileall "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/python3/dist-packages/simulation")
+  execute_process(COMMAND "/usr/bin/python3" -m compileall "/home/youran/Desktop/introtoros_2025/project/devel/.private/simulation/lib/python3/dist-packages/simulation")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages" TYPE DIRECTORY FILES "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/python3/dist-packages/simulation")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages" TYPE DIRECTORY FILES "/home/youran/Desktop/introtoros_2025/project/devel/.private/simulation/lib/python3/dist-packages/simulation")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/simulation.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/simulation.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation/cmake" TYPE FILE FILES "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/simulation-msg-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation/cmake" TYPE FILE FILES "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/simulation-msg-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation/cmake" TYPE FILE FILES
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/simulationConfig.cmake"
-    "/home/zzy/introtoros_2025-main-project/project/build/simulation/catkin_generated/installspace/simulationConfig-version.cmake"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/simulationConfig.cmake"
+    "/home/youran/Desktop/introtoros_2025/project/build/simulation/catkin_generated/installspace/simulationConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation" TYPE FILE FILES "/home/zzy/introtoros_2025-main-project/project/src/simulation/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation" TYPE FILE FILES "/home/youran/Desktop/introtoros_2025/project/src/simulation/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/zzy/introtoros_2025-main-project/project/build/simulation/gtest/cmake_install.cmake")
-  include("/home/zzy/introtoros_2025-main-project/project/build/simulation/tcpimage/cmake_install.cmake")
+  include("/home/youran/Desktop/introtoros_2025/project/build/simulation/gtest/cmake_install.cmake")
+  include("/home/youran/Desktop/introtoros_2025/project/build/simulation/tcpimage/cmake_install.cmake")
 
 endif()
 
@@ -209,5 +209,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/zzy/introtoros_2025-main-project/project/build/simulation/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/youran/Desktop/introtoros_2025/project/build/simulation/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

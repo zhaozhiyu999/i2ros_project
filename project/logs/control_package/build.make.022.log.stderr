@@ -1,0 +1,23 @@
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:13:8:[m[K [01;31m[Kerror: [m[Kstray ‘[01m[K#[m[K’ in program
+   13 | public:[01;31m[K#[m[Kinclude <ros/ros.h>
+      |        [01;31m[K^[m[K
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:13:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kinclude[m[K’ does not name a type
+   13 | public:#[01;31m[Kinclude[m[K <ros/ros.h>
+      |         [01;31m[K^~~~~~~[m[K
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:257:1:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ at end of input
+  257 | [01;31m[K}[m[K
+      | [01;31m[K^[m[K
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:12:26:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+   12 | class AngleDebugExecutor [01;36m[K{[m[K
+      |                          [01;36m[K^[m[K
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:[m[K In member function ‘[01m[Kint AngleDebugExecutor::main(int, char**)[m[K’:
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:254:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass AngleDebugExecutor[m[K’ has no member named ‘[01m[Kspin[m[K’
+  254 |     executor.[01;31m[Kspin[m[K();
+      |              [01;31m[K^~~~[m[K
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:[m[K At global scope:
+[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:257:1:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id at end of input
+  257 | [01;31m[K}[m[K
+      | [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/control_node.dir/build.make:63: CMakeFiles/control_node.dir/src/control_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:995: CMakeFiles/control_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

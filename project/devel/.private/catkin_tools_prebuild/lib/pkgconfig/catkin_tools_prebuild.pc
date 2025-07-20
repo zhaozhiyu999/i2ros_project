@@ -1,4 +1,4 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/catkin_tools_prebuild
+prefix=/home/youran/Desktop/introtoros_2025/project/devel/.private/catkin_tools_prebuild
 
 Name: catkin_tools_prebuild
 Description: Description of catkin_tools_prebuild

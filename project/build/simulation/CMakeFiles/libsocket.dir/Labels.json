@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/CMakeFiles/libsocket"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/CMakeFiles/libsocket"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/CMakeFiles/libsocket.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/CMakeFiles/libsocket.rule"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/CMakeFiles/libsocket-complete.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/CMakeFiles/libsocket-complete.rule"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-install.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-install.rule"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-mkdir.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-mkdir.rule"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-download.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-download.rule"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-update.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-update.rule"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-patch.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-patch.rule"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-configure.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-configure.rule"
 		},
 		{
-			"file" : "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-build.rule"
+			"file" : "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-stamp/libsocket-build.rule"
 		}
 	],
 	"target" : 

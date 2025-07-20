@@ -1,8 +1,8 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces
+prefix=/home/youran/Desktop/introtoros_2025/project/devel/.private/msg_interfaces
 
 Name: msg_interfaces
 Description: Description of msg_interfaces
 Version: 0.0.0
-Cflags: -I/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/include
+Cflags: -I/home/youran/Desktop/introtoros_2025/project/devel/.private/msg_interfaces/include
 Libs: -L${prefix}/lib 
 Requires: geometry_msgs std_msgs message_runtime

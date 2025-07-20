@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/zzy/introtoros_2025-main-project/project/src/perception/src/front_hazard_node.cpp
+/home/youran/Desktop/introtoros_2025/project/src/perception/src/front_hazard_node.cpp
 ros/ros.h
 -
 sensor_msgs/Image.h
@@ -399,6 +399,8 @@ ros/init.h
 /opt/ros/noetic/include/ros/ros/init.h
 common.h
 /opt/ros/noetic/include/ros/common.h
+boost/bind/bind.hpp
+-
 xmlrpcpp/XmlRpcValue.h
 -
 
