@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/libtcpimage.pdb"
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/libtcpimage.so"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/simulation/lib/libtcpimage.pdb"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/simulation/lib/libtcpimage.so"
   "CMakeFiles/tcpimage.dir/TCPImageServer.cpp.o"
 )
 

@@ -1,1 +1,1 @@
-/home/zzy/introtoros_2025-main-project/project/devel/.private/dummy_controller/share/dummy_controller/cmake/dummy_controllerConfig-version.cmake
+/home/youran/Desktop/i2ros_project/project/devel/.private/dummy_controller/share/dummy_controller/cmake/dummy_controllerConfig-version.cmake

@@ -1,1 +1,1 @@
-/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/share/msg_interfaces/cmake/msg_interfacesConfig-version.cmake
+/home/youran/Desktop/i2ros_project/project/devel/.private/msg_interfaces/share/msg_interfaces/cmake/msg_interfacesConfig-version.cmake

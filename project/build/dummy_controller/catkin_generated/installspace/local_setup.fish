@@ -5,7 +5,7 @@
 # or fall back to the destination set at configure time
 
 if test -z $_CATKIN_SETUP_DIR
-    set _CATKIN_SETUP_DIR /home/zzy/introtoros_2025-main-project/project/install
+    set _CATKIN_SETUP_DIR /home/youran/Desktop/i2ros_project/project/install
 end
 
 set CATKIN_SETUP_UTIL_ARGS "--extend --local"

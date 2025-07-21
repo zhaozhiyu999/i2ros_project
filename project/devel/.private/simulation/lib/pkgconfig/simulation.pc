@@ -1,8 +1,8 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation
+prefix=/home/youran/Desktop/i2ros_project/project/devel/.private/simulation
 
 Name: simulation
 Description: Description of simulation
 Version: 0.1.0
-Cflags: -I/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/include
+Cflags: -I/home/youran/Desktop/i2ros_project/project/devel/.private/simulation/include
 Libs: -L${prefix}/lib 
 Requires: message_runtime

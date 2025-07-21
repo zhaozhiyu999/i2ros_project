@@ -18,7 +18,7 @@ if not type -q bass
 end
 
 if test -z $_CATKIN_SETUP_DIR
-    set _CATKIN_SETUP_DIR /home/zzy/introtoros_2025-main-project/project/install
+    set _CATKIN_SETUP_DIR /home/youran/Desktop/i2ros_project/project/install
 end
 
 set _SETUP_UTIL "$_CATKIN_SETUP_DIR/_setup_util.py"

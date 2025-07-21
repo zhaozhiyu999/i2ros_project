@@ -1,4 +1,4 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/dummy_controller
+prefix=/home/youran/Desktop/i2ros_project/project/devel/.private/dummy_controller
 
 Name: dummy_controller
 Description: Description of dummy_controller

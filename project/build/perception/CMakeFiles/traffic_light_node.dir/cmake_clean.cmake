@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/perception/lib/perception/traffic_light_node"
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/perception/lib/perception/traffic_light_node.pdb"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/perception/lib/perception/traffic_light_node"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/perception/lib/perception/traffic_light_node.pdb"
   "CMakeFiles/traffic_light_node.dir/src/traffic_light_node.cpp.o"
 )
 

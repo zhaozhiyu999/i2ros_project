@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/control_package
+CMAKE_SOURCE_DIR = /home/youran/Desktop/i2ros_project/project/src/control_package
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/control_package
+CMAKE_BINARY_DIR = /home/youran/Desktop/i2ros_project/project/build/control_package
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zzy/introtoros_2025-main-project/project/build/control_package/CMakeFiles /home/zzy/introtoros_2025-main-project/project/build/control_package/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/youran/Desktop/i2ros_project/project/build/control_package/CMakeFiles /home/youran/Desktop/i2ros_project/project/build/control_package/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zzy/introtoros_2025-main-project/project/build/control_package/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/youran/Desktop/i2ros_project/project/build/control_package/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

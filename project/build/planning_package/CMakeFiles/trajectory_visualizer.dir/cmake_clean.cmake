@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/planning_package/lib/planning_package/trajectory_visualizer"
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/planning_package/lib/planning_package/trajectory_visualizer.pdb"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/planning_package/lib/planning_package/trajectory_visualizer"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/planning_package/lib/planning_package/trajectory_visualizer.pdb"
   "CMakeFiles/trajectory_visualizer.dir/src/trajectory_visualizer.cpp.o"
 )
 

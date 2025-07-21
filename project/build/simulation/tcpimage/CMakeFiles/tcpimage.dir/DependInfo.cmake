@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/zzy/introtoros_2025-main-project/project/src/simulation/tcpimage/TCPImageServer.cpp" "/home/zzy/introtoros_2025-main-project/project/build/simulation/tcpimage/CMakeFiles/tcpimage.dir/TCPImageServer.cpp.o"
+  "/home/youran/Desktop/i2ros_project/project/src/simulation/tcpimage/TCPImageServer.cpp" "/home/youran/Desktop/i2ros_project/project/build/simulation/tcpimage/CMakeFiles/tcpimage.dir/TCPImageServer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,16 +18,16 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/include"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/simulation/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/opencv4"
-  "/home/zzy/introtoros_2025-main-project/project/src/simulation/tcpimage"
+  "/home/youran/Desktop/i2ros_project/project/src/simulation/tcpimage"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/zzy/introtoros_2025-main-project/project/build/simulation/tcpimage/CMakeFiles/tcpstreamreader.dir/DependInfo.cmake"
+  "/home/youran/Desktop/i2ros_project/project/build/simulation/tcpimage/CMakeFiles/tcpstreamreader.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

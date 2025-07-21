@@ -80,6 +80,7 @@ public:
         vehicle_trail_pub_ = nh_.advertise<visualization_msgs::MarkerArray>("/planning/vehicle_trail", 1);
         planning_info_pub_ = nh_.advertise<visualization_msgs::Marker>("/planning/info_display", 1);
         global_path_pub_ = nh_.advertise<nav_msgs::Path>("/planning/global_path", 1, true); // 新增: 全局路径
+        debug_path_pub_ = nh_.advertise<nav_msgs::Path>("/planning/debug_forward_path", 1); // 调试用
 
         // ========== 参数设置 ==========
         nh_.param("planning_frequency", planning_frequency_, 10.0);
@@ -117,6 +118,10 @@ public:
         nh_.param("dwa/inflation_radius", dwa_inflation_radius_, 1.5);
         nh_.param("dwa/cost_path", dwa_cost_path_, 2.0);   // 可在 YAML 调
 
+        // 🔥 新增参数
+        nh_.param("dwa/direction_weight", dwa_direction_weight_, 2.0);
+        nh_.param("dwa/forward_check_distance", forward_check_distance_, 2.0);
+        nh_.param("path_progress_threshold", path_progress_threshold_, 1.5);
 
         // ========== 状态初始化 ==========
         vehicle_pose_received_ = false;
@@ -185,6 +190,7 @@ private:
     ros::Publisher vehicle_trail_pub_;
     ros::Publisher planning_info_pub_;
     ros::Publisher global_path_pub_; // 新增
+    ros::Publisher debug_path_pub_;  // 🔥 新增调试发布器
     
     // 定时器
     ros::Timer planning_timer_;
@@ -254,6 +260,10 @@ private:
     double dwa_inflation_radius_;
     double dwa_cost_path_;   // 新增：路径贴合权重
 
+    // 🔥 新增参数
+    double dwa_direction_weight_;
+    double forward_check_distance_;
+    double path_progress_threshold_;
 
     // 地图
     nav_msgs::OccupancyGrid::ConstPtr occupancy_grid_;
@@ -378,6 +388,7 @@ private:
             publishPlannedPathVisualization();
             publishVehicleTrailVisualization();
             publishPlanningInfo();
+            publishDebugForwardPath(); // 🔥 新增调试可视化
         }
     }
 
@@ -412,24 +423,10 @@ private:
                 double dy = current_y_ - global_sparse_[global_progress_idx_].y;
                 if (std::hypot(dx,dy) < wp_reach_thresh_) ++global_progress_idx_; else break;
             }
-            // 1）找离当前位置最近的稠密点索引
-            size_t nearest_dense = findNearestDenseIdx();
 
-            // 2）只有当它在 “当前进度点之后” 且真到达了，才推进
-            double dense_dx = current_x_ - global_dense_[dense_progress_idx_].x;
-            double dense_dy = current_y_ - global_dense_[dense_progress_idx_].y;
-            if (nearest_dense > dense_progress_idx_ &&
-                std::hypot(dense_dx, dense_dy) < dense_reach_thresh_) {
-                dense_progress_idx_ = nearest_dense;
-            }
-
-            // 3）用 dense_progress_idx_ 来裁剪 & 生成 active 段
-            size_t dense_start = dense_progress_idx_;
-            size_t dense_end   = std::min(dense_start + 200, global_dense_.size());
-            global_dense_active_.assign(global_dense_.begin()+dense_start,
-                            global_dense_.begin()+dense_end);
-
-
+            // 🔥 使用改进的进度更新
+            updateProgressWithDirection();
+            
             GlobalWp goal = pickLocalGoal(); // 根据行为指令自动横向偏移
             std::vector<PathPoint> dwa_path = runDWA(goal);
             if (!dwa_path.empty()) {
@@ -441,6 +438,261 @@ private:
         
         // Fallback (原 S-避障逻辑删除 → 简单直线)
         return generateStraightFallbackPath();
+    }
+
+    //--------------------------------------------------------
+    // 🔥 改进的进度更新机制
+    //--------------------------------------------------------
+    void updateProgressWithDirection()
+    {
+        if (global_dense_.empty()) return;
+        
+        // 找到最近的路径点
+        size_t nearest = findNearestDenseIdx();
+        
+        // 检查是否真的前进了
+        double current_to_nearest = std::hypot(current_x_ - global_dense_[nearest].x,
+                                              current_y_ - global_dense_[nearest].y);
+        
+        // 只有当距离足够近且确实前进时才更新进度
+        if (nearest > dense_progress_idx_ && current_to_nearest < path_progress_threshold_) {
+            // 额外检查：确保新的进度点在车辆前方
+            const auto& new_point = global_dense_[nearest];
+            double dx = new_point.x - current_x_;
+            double dy = new_point.y - current_y_;
+            double forward_dot = dx * std::cos(current_yaw_) + dy * std::sin(current_yaw_);
+            
+            // 如果点在前方或很接近，则更新进度
+            if (forward_dot > -forward_check_distance_) {
+                dense_progress_idx_ = nearest;
+                ROS_INFO_THROTTLE(1.0, "Progress updated to index %zu", dense_progress_idx_);
+            }
+        }
+        
+        // 重新生成active路径段
+        size_t dense_start = dense_progress_idx_;
+        size_t dense_end = std::min(dense_start + 200, global_dense_.size());
+        global_dense_active_.assign(global_dense_.begin() + dense_start,
+                                   global_dense_.begin() + dense_end);
+    }
+
+    //--------------------------------------------------------
+    // 🔥 新增：获取前方路径段（避免回头）
+    //--------------------------------------------------------
+    std::vector<GlobalWp> getForwardPathSegment()
+    {
+        std::vector<GlobalWp> forward_path;
+        if (global_dense_active_.empty()) return forward_path;
+        
+        // 找到当前位置在路径上的投影点
+        size_t closest_idx = 0;
+        double min_dist = std::numeric_limits<double>::max();
+        
+        for (size_t i = 0; i < global_dense_active_.size(); ++i) {
+            double dist = std::hypot(global_dense_active_[i].x - current_x_, 
+                                    global_dense_active_[i].y - current_y_);
+            if (dist < min_dist) {
+                min_dist = dist;
+                closest_idx = i;
+            }
+        }
+        
+        // 🔥 关键：只取当前点之后的路径段
+        // 额外检查：确保选择的点在车辆前方
+        for (size_t i = closest_idx; i < global_dense_active_.size(); ++i) {
+            const auto& wp = global_dense_active_[i];
+            
+            // 检查该点是否在车辆前方（使用点积判断）
+            double dx = wp.x - current_x_;
+            double dy = wp.y - current_y_;
+            double forward_dot = dx * std::cos(current_yaw_) + dy * std::sin(current_yaw_);
+            
+            // 只添加在前方的点，或者距离很近的点
+            if (forward_dot > -forward_check_distance_) {  // 允许轻微的侧后方点，避免过于严格
+                forward_path.push_back(wp);
+            }
+            
+            // 限制前瞻距离
+            if (std::hypot(dx, dy) > local_lookahead_m_) break;
+        }
+        
+        return forward_path;
+    }
+
+    //--------------------------------------------------------
+    // 🔥 新增：方向性路径代价函数
+    //--------------------------------------------------------
+    double computeDirectionalPathCost(const std::vector<PathPoint>& traj, 
+                                     const std::vector<GlobalWp>& forward_path)
+    {
+        if (forward_path.empty() || traj.empty()) return 1000.0;
+        
+        double total_cost = 0.0;
+        int valid_points = 0;
+        
+        for (const auto& pt : traj) {
+            double min_dist = std::numeric_limits<double>::max();
+            
+            // 对每个轨迹点，找最近的前方路径点
+            for (const auto& wp : forward_path) {
+                double dist = std::hypot(pt.x - wp.x, pt.y - wp.y);
+                if (dist < min_dist) {
+                    min_dist = dist;
+                }
+            }
+            
+            total_cost += min_dist;
+            valid_points++;
+        }
+        
+        return valid_points > 0 ? total_cost / valid_points : 1000.0;
+    }
+
+    //--------------------------------------------------------
+    // 🔥 新增：方向一致性代价函数
+    //--------------------------------------------------------
+    double computeDirectionCost(const std::vector<PathPoint>& traj, 
+                               const std::vector<GlobalWp>& forward_path)
+    {
+        if (forward_path.empty() || traj.size() < 2) return 0.0;
+        
+        double direction_penalty = 0.0;
+        
+        // 计算轨迹的总体方向
+        const auto& start = traj.front();
+        const auto& end = traj.back();
+        double traj_direction = std::atan2(end.y - start.y, end.x - start.x);
+        
+        // 计算期望的路径方向
+        if (forward_path.size() >= 2) {
+            const auto& path_start = forward_path.front();
+            const auto& path_end = forward_path.back();
+            double path_direction = std::atan2(path_end.y - path_start.y, 
+                                              path_end.x - path_start.x);
+            
+            // 计算方向差异
+            double angle_diff = std::abs(wrapAngle(traj_direction - path_direction));
+            direction_penalty = angle_diff / M_PI;  // 归一化到 [0,1]
+        }
+        
+        return direction_penalty;
+    }
+
+    //--------------------------------------------------------
+    // 🔥 改进的 DWA Implementation (添加方向性约束)
+    //--------------------------------------------------------
+    std::vector<PathPoint> runDWA(const GlobalWp& goal)
+    {
+        // 构建障碍点集 (保持原有逻辑)
+        std::vector<std::pair<double,double>> obstacles;
+        if (occupancy_grid_received_ && occupancy_grid_){
+            const auto &g = *occupancy_grid_;
+            double res = g.info.resolution;
+            double org_x = g.info.origin.position.x;
+            double org_y = g.info.origin.position.y;
+            int w = g.info.width;
+            int h = g.info.height;
+            double range2 = dwa_obstacle_range_ * dwa_obstacle_range_;
+            for (int iy=0; iy<h; ++iy){
+                for (int ix=0; ix<w; ++ix){
+                    int idx = iy*w + ix;
+                    if (g.data[idx] > 50){
+                        double wx = org_x + (ix + 0.5)*res;
+                        double wy = org_y + (iy + 0.5)*res;
+                        double dx = wx - current_x_;
+                        double dy = wy - current_y_;
+                        if (dx*dx + dy*dy <= range2){
+                            obstacles.emplace_back(wx, wy);
+                        }
+                    }
+                }
+            }
+        }
+
+        // 动窗 (速度 / 角速度 限制)
+        double v_min = std::max(dwa_v_min_param_, current_speed_ - dwa_acc_v_ * dwa_dt_);
+        double v_max = std::min(dwa_v_max_param_, current_speed_ + dwa_acc_v_ * dwa_dt_);
+        if (v_min < 0.0) v_min = 0.0; // 无倒车
+        double w_min = std::max(dwa_w_min_param_, current_yaw_rate_ - dwa_acc_w_ * dwa_dt_);
+        double w_max = std::min(dwa_w_max_param_, current_yaw_rate_ + dwa_acc_w_ * dwa_dt_);
+
+        double best_cost = std::numeric_limits<double>::max();
+        std::vector<PathPoint> best_traj;
+
+        int vN = std::max(1, dwa_v_samples_);
+        int wN = std::max(1, dwa_w_samples_);
+
+        // 🔥 新增：创建方向性路径段
+        std::vector<GlobalWp> forward_path = getForwardPathSegment();
+
+        for (int i=0;i<=vN;++i){
+            double v = v_min + (v_max - v_min) * i / double(vN);
+            for (int j=0;j<=wN;++j){
+                double w = w_min + (w_max - w_min) * j / double(wN);
+
+                // rollout
+                double x = current_x_;
+                double y = current_y_;
+                double yaw = current_yaw_;
+                double t = 0.0;
+                double min_obst_dist = std::numeric_limits<double>::max();
+                std::vector<PathPoint> traj;
+                
+                while (t < dwa_predict_time_){
+                    x += v * std::cos(yaw) * dwa_dt_;
+                    y += v * std::sin(yaw) * dwa_dt_;
+                    yaw = wrapAngle(yaw + w * dwa_dt_);
+                    t += dwa_dt_;
+                    PathPoint pt; 
+                    pt.x=x; pt.y=y; pt.yaw=yaw; pt.velocity=v; pt.timestamp=ros::Time::now();
+                    traj.push_back(pt);
+                    
+                    // 障碍物距离计算
+                    if (!obstacles.empty()){
+                        for (auto &ob : obstacles){
+                            double d = std::hypot(x - ob.first, y - ob.second) - dwa_inflation_radius_;
+                            if (d < min_obst_dist) min_obst_dist = d;
+                        }
+                    }
+                }
+                if (obstacles.empty()) min_obst_dist = 10.0; // no obstacles
+
+                // 🔥 改进的路径贴合度计算 - 只考虑前方路径
+                double path_cost = computeDirectionalPathCost(traj, forward_path);
+                
+                // heading cost: dist from end to goal
+                double hd_cost = std::hypot(x - goal.x, y - goal.y);
+                
+                // clearance cost: inverse of min distance
+                double clr_cost = (min_obst_dist > 0.0) ? 1.0 / min_obst_dist : 1e9;
+                
+                // velocity cost: prefer faster
+                double vel_cost = dwa_v_max_param_ - v;
+                
+                // 🔥 新增：方向一致性代价
+                double direction_cost = computeDirectionCost(traj, forward_path);
+                
+                double cost = dwa_cost_heading_ * hd_cost + 
+                             dwa_cost_path_ * path_cost + 
+                             dwa_cost_clear_ * clr_cost + 
+                             dwa_cost_vel_ * vel_cost +
+                             dwa_direction_weight_ * direction_cost;  // 方向一致性权重
+
+                if (cost < best_cost){
+                    best_cost = cost;
+                    best_traj = traj;
+                }
+            }
+        }
+
+        // 确保起点包含当前位姿
+        if (!best_traj.empty()){
+            PathPoint cur; 
+            cur.x=current_x_; cur.y=current_y_; cur.yaw=current_yaw_; 
+            cur.velocity=current_speed_; cur.timestamp=ros::Time::now();
+            best_traj.insert(best_traj.begin(), cur);
+        }
+        return best_traj;
     }
 
     //--------------------------------------------------------
@@ -570,6 +822,34 @@ private:
         }
 
         path_pub_.publish(path_msg);
+    }
+
+    // 🔥 新增：调试前方路径可视化
+    void publishDebugForwardPath()
+    {
+        std::vector<GlobalWp> forward_path = getForwardPathSegment();
+        if (forward_path.empty()) return;
+
+        nav_msgs::Path debug_msg;
+        debug_msg.header.stamp = ros::Time::now();
+        debug_msg.header.frame_id = "map";
+
+        for (const auto& wp : forward_path) {
+            geometry_msgs::PoseStamped pose_stamped;
+            pose_stamped.header = debug_msg.header;
+            
+            pose_stamped.pose.position.x = wp.x;
+            pose_stamped.pose.position.y = wp.y;
+            pose_stamped.pose.position.z = 0.5;  // 稍高一点用于区分
+
+            tf2::Quaternion q;
+            q.setRPY(0, 0, wp.yaw);
+            pose_stamped.pose.orientation = tf2::toMsg(q);
+
+            debug_msg.poses.push_back(pose_stamped);
+        }
+
+        debug_path_pub_.publish(debug_msg);
     }
 
     void publishPlannedPathVisualization()
@@ -764,6 +1044,7 @@ private:
         info_text += "\nPath: " + std::to_string(current_planned_path_.size()) + " pts";
         info_text += "\nTrail: " + std::to_string(trail_points_.size()) + " pts";
         info_text += "\nBehavior: " + behavior_command_;
+        info_text += "\nProgress: " + std::to_string(dense_progress_idx_) + "/" + std::to_string(global_dense_.size());
 
         // 状态指示 & 颜色
         if (is_emergency_stop_) {
@@ -787,6 +1068,7 @@ private:
         info_marker.text = info_text;
         planning_info_pub_.publish(info_marker);
     }
+
     // ========================================================
     // --------- 全局航点 / 路径函数 --------------------------
     // ========================================================
@@ -812,9 +1094,6 @@ private:
             ROS_ERROR("JSON parse error in %s : %s", filename.c_str(), e.what());
             return false;
         }
-
-    
-       
 
         for (auto &w : j) {
             GlobalWp p;
@@ -878,6 +1157,7 @@ private:
         }
         return nearest;
     }
+
     // 从指定的 global_sparse_ 索引出发，找在 global_dense_ 中最接近该航点的索引
     size_t findNearestDenseIdxFrom(size_t sparse_idx) const {
         if (global_sparse_.empty() || global_dense_.empty()) return 0;
@@ -918,116 +1198,6 @@ private:
         return goal;
     }
 
-    //--------------------------------------------------------
-    // DWA Implementation (unicycle model)
-    //--------------------------------------------------------
-    std::vector<PathPoint> runDWA(const GlobalWp& goal)
-    {
-        // 构建障碍点集
-        std::vector<std::pair<double,double>> obstacles;
-        if (occupancy_grid_received_ && occupancy_grid_){
-            const auto &g = *occupancy_grid_;
-            double res = g.info.resolution;
-            double org_x = g.info.origin.position.x;
-            double org_y = g.info.origin.position.y;
-            int w = g.info.width;
-            int h = g.info.height;
-            double range2 = dwa_obstacle_range_ * dwa_obstacle_range_;
-            for (int iy=0; iy<h; ++iy){
-                for (int ix=0; ix<w; ++ix){
-                    int idx = iy*w + ix;
-                    if (g.data[idx] > 50){
-                        double wx = org_x + (ix + 0.5)*res;
-                        double wy = org_y + (iy + 0.5)*res;
-                        double dx = wx - current_x_;
-                        double dy = wy - current_y_;
-                        if (dx*dx + dy*dy <= range2){
-                            obstacles.emplace_back(wx, wy);
-                        }
-                    }
-                }
-            }
-        }
-
-        // 动窗 (速度 / 角速度 限制)
-        double v_min = std::max(dwa_v_min_param_, current_speed_ - dwa_acc_v_ * dwa_dt_);
-        double v_max = std::min(dwa_v_max_param_, current_speed_ + dwa_acc_v_ * dwa_dt_);
-        if (v_min < 0.0) v_min = 0.0; // 无倒车
-        double w_min = std::max(dwa_w_min_param_, current_yaw_rate_ - dwa_acc_w_ * dwa_dt_);
-        double w_max = std::min(dwa_w_max_param_, current_yaw_rate_ + dwa_acc_w_ * dwa_dt_);
-
-        double best_cost = std::numeric_limits<double>::max();
-        std::vector<PathPoint> best_traj;
-
-        int vN = std::max(1, dwa_v_samples_);
-        int wN = std::max(1, dwa_w_samples_);
-
-        for (int i=0;i<=vN;++i){
-            double v = v_min + (v_max - v_min) * i / double(vN);
-            for (int j=0;j<=wN;++j){
-                double w = w_min + (w_max - w_min) * j / double(wN);
-
-                // rollout
-                double x = current_x_;
-                double y = current_y_;
-                double yaw = current_yaw_;
-                double t = 0.0;
-                double min_obst_dist = std::numeric_limits<double>::max();
-                std::vector<PathPoint> traj;
-                while (t < dwa_predict_time_){
-                    x += v * std::cos(yaw) * dwa_dt_;
-                    y += v * std::sin(yaw) * dwa_dt_;
-                    yaw = wrapAngle(yaw + w * dwa_dt_);
-                    t += dwa_dt_;
-                    PathPoint pt; pt.x=x; pt.y=y; pt.yaw=yaw; pt.velocity=v; pt.timestamp=ros::Time::now();
-                    traj.push_back(pt);
-                    if (!obstacles.empty()){
-                        for (auto &ob : obstacles){
-                            double d = std::hypot(x - ob.first, y - ob.second) - dwa_inflation_radius_;
-                            if (d < min_obst_dist) min_obst_dist = d;
-                        }
-                    }
-                }
-                if (obstacles.empty()) min_obst_dist = 10.0; // no obstacles
-                // ==== 修改后的路径贴合度（只匹配前方路径） ====
-                
-
-                double path_cost = 0.0;
-                for (const auto &pt_i : traj) {
-                    double best = std::numeric_limits<double>::max();
-                    for (const auto &wp : global_dense_active_) {
-                        double d = std::hypot(pt_i.x - wp.x, pt_i.y - wp.y);
-                        if (d < best) best = d;
-                    }
-                    path_cost += best;
-                }
-                
-                path_cost /= traj.size();
-
-
-                // heading cost: dist from end to goal
-                double hd_cost = std::hypot(x - goal.x, y - goal.y);
-                // clearance cost: inverse of min distance (bigger distance => smaller cost)
-                double clr_cost = (min_obst_dist > 0.0) ? 1.0 / min_obst_dist : 1e9;
-                // velocity cost: prefer faster
-                double vel_cost = dwa_v_max_param_ - v;
-                double cost = dwa_cost_heading_ * hd_cost +dwa_cost_path_ * path_cost + dwa_cost_clear_ * clr_cost + dwa_cost_vel_ * vel_cost;
-
-                if (cost < best_cost){
-                    best_cost = cost;
-                    best_traj = traj;
-                }
-            }
-        }
-
-        // 确保起点包含当前位姿
-        if (!best_traj.empty()){
-            PathPoint cur; cur.x=current_x_; cur.y=current_y_; cur.yaw=current_yaw_; cur.velocity=current_speed_; cur.timestamp=ros::Time::now();
-            best_traj.insert(best_traj.begin(), cur);
-        }
-        return best_traj;
-    }
-
 }; // end class
 
 //------------------------------------------------------------
@@ -1051,10 +1221,13 @@ int main(int argc, char** argv)
     ROS_INFO("  - /planning/vehicle_trail (车辆轨迹可视化)");
     ROS_INFO("  - /planning/info_display (规划信息显示)");
     ROS_INFO("  - /planning/global_path (全局路径)");
+    ROS_INFO("  - /planning/debug_forward_path (调试前方路径)");
     ROS_INFO("🎯 Features:");
     ROS_INFO("  ✅ 全局航点 + 局部DWA");
     ROS_INFO("  ✅ 保留原可视化与速度行为接口");
     ROS_INFO("  ✅ 紧急停车、减速、避让映射到DWA");
+    ROS_INFO("  ✅ 方向性约束，避免路径混淆");
+    ROS_INFO("  ✅ 改进的进度更新机制");
     ROS_INFO("================================================");
     
     ros::spin();

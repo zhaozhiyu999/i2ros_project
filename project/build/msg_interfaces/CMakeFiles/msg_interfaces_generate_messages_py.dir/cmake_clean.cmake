@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/lib/python3/dist-packages/msg_interfaces/msg/_Trajectory.py"
-  "/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/lib/python3/dist-packages/msg_interfaces/msg/__init__.py"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/msg_interfaces/lib/python3/dist-packages/msg_interfaces/msg/_Trajectory.py"
+  "/home/youran/Desktop/i2ros_project/project/devel/.private/msg_interfaces/lib/python3/dist-packages/msg_interfaces/msg/__init__.py"
   "CMakeFiles/msg_interfaces_generate_messages_py"
 )
 

@@ -1,6 +1,6 @@
-devel_space: /home/zzy/introtoros_2025-main-project/project/devel
+devel_space: /home/youran/Desktop/i2ros_project/project/devel
 install: false
-install_space: /home/zzy/introtoros_2025-main-project/project/install
+install_space: /home/youran/Desktop/i2ros_project/project/install
 profile: default
-source_space: /home/zzy/introtoros_2025-main-project/project/src
-workspace: /home/zzy/introtoros_2025-main-project/project
+source_space: /home/youran/Desktop/i2ros_project/project/src
+workspace: /home/youran/Desktop/i2ros_project/project

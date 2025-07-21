@@ -1,4 +1,4 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/install
+prefix=/home/youran/Desktop/i2ros_project/project/install
 
 Name: catkin_tools_prebuild
 Description: Description of catkin_tools_prebuild
