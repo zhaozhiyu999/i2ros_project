@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/youran/Desktop/introtoros_2025/project/src/msg_interfaces
+CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/msg_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces
+CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces
 
 # Utility rule file for std_msgs_generate_messages_nodejs.
 
@@ -67,6 +67,6 @@ CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
 .PHONY : CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 
 CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend:
-	cd /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Desktop/introtoros_2025/project/src/msg_interfaces /home/youran/Desktop/introtoros_2025/project/src/msg_interfaces /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces /home/youran/Desktop/introtoros_2025/project/build/msg_interfaces/CMakeFiles/std_msgs_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/msg_interfaces /home/zzy/introtoros_2025-main-project/project/src/msg_interfaces /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces /home/zzy/introtoros_2025-main-project/project/build/msg_interfaces/CMakeFiles/std_msgs_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
 

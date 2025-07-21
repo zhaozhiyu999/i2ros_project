@@ -1,7 +1,0 @@
-[01m[K/home/youran/Desktop/introtoros_2025/project/src/control_package/src/control_node.cpp:2:2:[m[K [01;31m[Kerror: [m[Kinvalid preprocessing directive #in; did you mean #if?
-    2 | #[01;31m[Kin[m[K#include <ros/ros.h>
-      |  [01;31m[K^~[m[K
-      |  [32m[Kif[m[K
-make[2]: *** [CMakeFiles/control_node.dir/build.make:63: CMakeFiles/control_node.dir/src/control_node.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:995: CMakeFiles/control_node.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

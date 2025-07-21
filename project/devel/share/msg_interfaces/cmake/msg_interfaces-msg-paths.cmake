@@ -1,1 +1,1 @@
-/home/youran/Desktop/introtoros_2025/project/devel/.private/msg_interfaces/share/msg_interfaces/cmake/msg_interfaces-msg-paths.cmake
+/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/share/msg_interfaces/cmake/msg_interfaces-msg-paths.cmake

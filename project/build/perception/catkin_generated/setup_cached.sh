@@ -7,7 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/youran/Desktop/introtoros_2025/project/devel/.private/perception:$CMAKE_PREFIX_PATH"
-export PWD='/home/youran/Desktop/introtoros_2025/project/build/perception'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/youran/Desktop/introtoros_2025/project/devel/.private/perception/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/youran/Desktop/introtoros_2025/project/src/perception:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/zzy/introtoros_2025-main-project/project/devel/.private/perception:$CMAKE_PREFIX_PATH"
+export PWD='/home/zzy/introtoros_2025-main-project/project/build/perception'
+export ROSLISP_PACKAGE_DIRECTORIES="/home/zzy/introtoros_2025-main-project/project/devel/.private/perception/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/zzy/introtoros_2025-main-project/project/src/perception:$ROS_PACKAGE_PATH"

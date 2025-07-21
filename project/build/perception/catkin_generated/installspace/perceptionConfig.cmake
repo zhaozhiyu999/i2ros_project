@@ -67,14 +67,14 @@ set(perception_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(perception_SOURCE_PREFIX /home/youran/Desktop/introtoros_2025/project/src/perception)
-  set(perception_DEVEL_PREFIX /home/youran/Desktop/introtoros_2025/project/devel/.private/perception)
+  set(perception_SOURCE_PREFIX /home/zzy/introtoros_2025-main-project/project/src/perception)
+  set(perception_DEVEL_PREFIX /home/zzy/introtoros_2025-main-project/project/devel/.private/perception)
   set(perception_INSTALL_PREFIX "")
   set(perception_PREFIX ${perception_DEVEL_PREFIX})
 else()
   set(perception_SOURCE_PREFIX "")
   set(perception_DEVEL_PREFIX "")
-  set(perception_INSTALL_PREFIX /home/youran/Desktop/introtoros_2025/project/install)
+  set(perception_INSTALL_PREFIX /home/zzy/introtoros_2025-main-project/project/install)
   set(perception_PREFIX ${perception_INSTALL_PREFIX})
 endif()
 
@@ -118,7 +118,7 @@ endif()
 
 set(libraries "")
 foreach(library ${libraries})
-  # keep build configuration keywords, generator expressions, target names, and absolute libraries as-is
+  # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
     list(APPEND perception_LIBRARIES ${library})
   elseif(${library} MATCHES "^-l")
@@ -146,8 +146,6 @@ foreach(library ${libraries})
       target_link_options("${interface_target_name}" INTERFACE "${library}")
     endif()
     list(APPEND perception_LIBRARIES "${interface_target_name}")
-  elseif(${library} MATCHES "^\\$<")
-    list(APPEND perception_LIBRARIES ${library})
   elseif(TARGET ${library})
     list(APPEND perception_LIBRARIES ${library})
   elseif(IS_ABSOLUTE ${library})
@@ -156,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/youran/Desktop/introtoros_2025/project/install/lib;/home/youran/Desktop/introtoros_2025/project/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/zzy/introtoros_2025-main-project/project/install/lib;/home/zzy/introtoros_2025-main-project/project/devel/lib;/home/zzy/ros_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

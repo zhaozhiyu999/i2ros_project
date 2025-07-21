@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/youran/Desktop/introtoros_2025/project/src/planning_package
-# Build directory: /home/youran/Desktop/introtoros_2025/project/build/planning_package
+# Source directory: /home/zzy/introtoros_2025-main-project/project/src/planning_package
+# Build directory: /home/zzy/introtoros_2025-main-project/project/build/planning_package
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/youran/Desktop/introtoros_2025/project/devel/.private/perception/lib/perception/depth_to_cloud_node"
-  "/home/youran/Desktop/introtoros_2025/project/devel/.private/perception/lib/perception/depth_to_cloud_node.pdb"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/perception/lib/perception/depth_to_cloud_node"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/perception/lib/perception/depth_to_cloud_node.pdb"
   "CMakeFiles/depth_to_cloud_node.dir/src/depth_to_cloud_node.cpp.o"
 )
 

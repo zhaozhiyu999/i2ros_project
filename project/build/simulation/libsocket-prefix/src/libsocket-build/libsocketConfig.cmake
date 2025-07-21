@@ -1,6 +1,6 @@
-set(libsocket_INCLUDE_DIRS "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket/headers")
+set(libsocket_INCLUDE_DIRS "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers")
 
-set(libsocket_BINARY_DIR "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-build")
+set(libsocket_BINARY_DIR "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-build")
 
 include(${libsocket_BINARY_DIR}/libsocketTargets.cmake)
 

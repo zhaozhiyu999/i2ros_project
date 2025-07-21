@@ -1,1 +1,1 @@
-/home/youran/Desktop/introtoros_2025/project/devel/.private/msg_interfaces/share/roseus/ros/msg_interfaces/msg/Trajectory.l
+/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/share/roseus/ros/msg_interfaces/msg/Trajectory.l

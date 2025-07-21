@@ -248,55 +248,29 @@ struct Printer< ::msg_interfaces::Trajectory_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::msg_interfaces::Trajectory_<ContainerAllocator>& v)
   {
-    if (false || !indent.empty())
-      s << std::endl;
     s << indent << "header: ";
+    s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
-    if (true || !indent.empty())
-      s << std::endl;
-    s << indent << "poses: ";
-    if (v.poses.empty() || false)
-      s << "[";
+    s << indent << "poses[]" << std::endl;
     for (size_t i = 0; i < v.poses.size(); ++i)
     {
-      if (false && i > 0)
-        s << ", ";
-      else if (!false)
-        s << std::endl << indent << "  -";
-      Printer< ::geometry_msgs::Pose_<ContainerAllocator> >::stream(s, false ? std::string() : indent + "    ", v.poses[i]);
-    }
-    if (v.poses.empty() || false)
-      s << "]";
-    if (true || !indent.empty())
+      s << indent << "  poses[" << i << "]: ";
       s << std::endl;
-    s << indent << "velocities: ";
-    if (v.velocities.empty() || true)
-      s << "[";
+      s << indent;
+      Printer< ::geometry_msgs::Pose_<ContainerAllocator> >::stream(s, indent + "    ", v.poses[i]);
+    }
+    s << indent << "velocities[]" << std::endl;
     for (size_t i = 0; i < v.velocities.size(); ++i)
     {
-      if (true && i > 0)
-        s << ", ";
-      else if (!true)
-        s << std::endl << indent << "  -";
-      Printer<float>::stream(s, true ? std::string() : indent + "    ", v.velocities[i]);
+      s << indent << "  velocities[" << i << "]: ";
+      Printer<float>::stream(s, indent + "  ", v.velocities[i]);
     }
-    if (v.velocities.empty() || true)
-      s << "]";
-    if (true || !indent.empty())
-      s << std::endl;
-    s << indent << "timestamps: ";
-    if (v.timestamps.empty() || true)
-      s << "[";
+    s << indent << "timestamps[]" << std::endl;
     for (size_t i = 0; i < v.timestamps.size(); ++i)
     {
-      if (true && i > 0)
-        s << ", ";
-      else if (!true)
-        s << std::endl << indent << "  -";
-      Printer<float>::stream(s, true ? std::string() : indent + "    ", v.timestamps[i]);
+      s << indent << "  timestamps[" << i << "]: ";
+      Printer<float>::stream(s, indent + "  ", v.timestamps[i]);
     }
-    if (v.timestamps.empty() || true)
-      s << "]";
   }
 };
 

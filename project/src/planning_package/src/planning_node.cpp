@@ -100,7 +100,7 @@ public:
 
         // --- DWA 参数 ---
         nh_.param("dwa/dt", dwa_dt_, 0.1);
-        nh_.param("dwa/predict_time", dwa_predict_time_, 2.0);
+        nh_.param("dwa/predict_time", dwa_predict_time_, 3.0);
         nh_.param("dwa/v_samples", dwa_v_samples_, 5);
         nh_.param("dwa/w_samples", dwa_w_samples_, 5);
         nh_.param("dwa/acc_v", dwa_acc_v_, 3.0);
@@ -115,6 +115,8 @@ public:
         nh_.param("dwa/cost_vel", dwa_cost_vel_, 0.5);
         nh_.param("dwa/obstacle_range", dwa_obstacle_range_, 30.0);
         nh_.param("dwa/inflation_radius", dwa_inflation_radius_, 1.5);
+        nh_.param("dwa/cost_path", dwa_cost_path_, 2.0);   // 可在 YAML 调
+
 
         // ========== 状态初始化 ==========
         vehicle_pose_received_ = false;
@@ -229,6 +231,9 @@ private:
     
     std::vector<GlobalWp> global_sparse_;
     std::vector<GlobalWp> global_dense_;
+    std::vector<GlobalWp> global_dense_active_;  // 新增：仅保留当前有效路径段
+    size_t dense_progress_idx_{0};   // 新增
+    const double dense_reach_thresh_ = 2.0;
     size_t global_progress_idx_{0};
 
     // --- DWA 参数 ---
@@ -247,6 +252,8 @@ private:
     double dwa_cost_vel_;
     double dwa_obstacle_range_;
     double dwa_inflation_radius_;
+    double dwa_cost_path_;   // 新增：路径贴合权重
+
 
     // 地图
     nav_msgs::OccupancyGrid::ConstPtr occupancy_grid_;
@@ -399,6 +406,30 @@ private:
         }
         
         if (global_loaded_ && vehicle_pose_received_) {
+            // 更新稀疏目标进度 (仅用于统计)
+            while (global_progress_idx_+1 < global_sparse_.size()){
+                double dx = current_x_ - global_sparse_[global_progress_idx_].x;
+                double dy = current_y_ - global_sparse_[global_progress_idx_].y;
+                if (std::hypot(dx,dy) < wp_reach_thresh_) ++global_progress_idx_; else break;
+            }
+            // 1）找离当前位置最近的稠密点索引
+            size_t nearest_dense = findNearestDenseIdx();
+
+            // 2）只有当它在 “当前进度点之后” 且真到达了，才推进
+            double dense_dx = current_x_ - global_dense_[dense_progress_idx_].x;
+            double dense_dy = current_y_ - global_dense_[dense_progress_idx_].y;
+            if (nearest_dense > dense_progress_idx_ &&
+                std::hypot(dense_dx, dense_dy) < dense_reach_thresh_) {
+                dense_progress_idx_ = nearest_dense;
+            }
+
+            // 3）用 dense_progress_idx_ 来裁剪 & 生成 active 段
+            size_t dense_start = dense_progress_idx_;
+            size_t dense_end   = std::min(dense_start + 200, global_dense_.size());
+            global_dense_active_.assign(global_dense_.begin()+dense_start,
+                            global_dense_.begin()+dense_end);
+
+
             GlobalWp goal = pickLocalGoal(); // 根据行为指令自动横向偏移
             std::vector<PathPoint> dwa_path = runDWA(goal);
             if (!dwa_path.empty()) {
@@ -847,16 +878,26 @@ private:
         }
         return nearest;
     }
+    // 从指定的 global_sparse_ 索引出发，找在 global_dense_ 中最接近该航点的索引
+    size_t findNearestDenseIdxFrom(size_t sparse_idx) const {
+        if (global_sparse_.empty() || global_dense_.empty()) return 0;
+        const auto& ref = global_sparse_[sparse_idx];
+        size_t best_idx = 0;
+        double best_dist = std::numeric_limits<double>::max();
+        for (size_t i = 0; i < global_dense_.size(); ++i) {
+            double d = std::hypot(ref.x - global_dense_[i].x, ref.y - global_dense_[i].y);
+            if (d < best_dist) {
+                best_dist = d;
+                best_idx = i;
+            }
+        }
+        return best_idx;
+    }
 
     GlobalWp pickLocalGoal()
     {
         size_t nearest = findNearestDenseIdx();
-        // 更新稀疏目标进度 (仅用于统计)
-        while (global_progress_idx_+1 < global_sparse_.size()){
-            double dx = current_x_ - global_sparse_[global_progress_idx_].x;
-            double dy = current_y_ - global_sparse_[global_progress_idx_].y;
-            if (std::hypot(dx,dy) < wp_reach_thresh_) ++global_progress_idx_; else break;
-        }
+        
         // 沿稠密路径前瞻
         double acc = 0.0; size_t goal_idx = nearest;
         for (size_t i=nearest; i+1<global_dense_.size(); ++i){
@@ -948,6 +989,21 @@ private:
                     }
                 }
                 if (obstacles.empty()) min_obst_dist = 10.0; // no obstacles
+                // ==== 修改后的路径贴合度（只匹配前方路径） ====
+                
+
+                double path_cost = 0.0;
+                for (const auto &pt_i : traj) {
+                    double best = std::numeric_limits<double>::max();
+                    for (const auto &wp : global_dense_active_) {
+                        double d = std::hypot(pt_i.x - wp.x, pt_i.y - wp.y);
+                        if (d < best) best = d;
+                    }
+                    path_cost += best;
+                }
+                
+                path_cost /= traj.size();
+
 
                 // heading cost: dist from end to goal
                 double hd_cost = std::hypot(x - goal.x, y - goal.y);
@@ -955,7 +1011,7 @@ private:
                 double clr_cost = (min_obst_dist > 0.0) ? 1.0 / min_obst_dist : 1e9;
                 // velocity cost: prefer faster
                 double vel_cost = dwa_v_max_param_ - v;
-                double cost = dwa_cost_heading_ * hd_cost + dwa_cost_clear_ * clr_cost + dwa_cost_vel_ * vel_cost;
+                double cost = dwa_cost_heading_ * hd_cost +dwa_cost_path_ * path_cost + dwa_cost_clear_ * clr_cost + dwa_cost_vel_ * vel_cost;
 
                 if (cost < best_cost){
                     best_cost = cost;

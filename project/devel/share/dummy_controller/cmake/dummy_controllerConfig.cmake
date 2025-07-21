@@ -1,1 +1,1 @@
-/home/youran/Desktop/introtoros_2025/project/devel/.private/dummy_controller/share/dummy_controller/cmake/dummy_controllerConfig.cmake
+/home/zzy/introtoros_2025-main-project/project/devel/.private/dummy_controller/share/dummy_controller/cmake/dummy_controllerConfig.cmake

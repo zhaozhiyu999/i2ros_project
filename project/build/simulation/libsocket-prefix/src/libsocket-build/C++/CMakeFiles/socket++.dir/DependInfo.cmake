@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/youran/Desktop/introtoros_2025/project/build/simulation/libsocket-prefix/src/libsocket-build/C/CMakeFiles/socket_int.dir/DependInfo.cmake"
+  "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-build/C/CMakeFiles/socket_int.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
