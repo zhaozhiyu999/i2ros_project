@@ -1,5 +1,5 @@
-Cloning into 'libsocket'...
-Already on 'master'
+正克隆到 'libsocket'...
+已经位于 'master'
 CMake Warning (dev) at /usr/share/cmake-3.16/Modules/CPack.cmake:569 (option):
   Policy CMP0077 is not set: option() honors normal variables.  Run "cmake
   --help-policy CMP0077" for policy details.  Use the cmake_policy command to
@@ -66,13 +66,5 @@ Call Stack (most recent call first):
   CMakeLists.txt:64 (INCLUDE)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
-make[3]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-make[3]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-[01m[K/home/youran/Desktop/i2ros_project/project/src/simulation/src/ROS_command_transmitter.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Ksimulation/VehicleControl.h: No such file or directory
-    6 | #include [01;31m[K"simulation/VehicleControl.h"[m[K
-      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-make[2]: *** [CMakeFiles/ROS_command_transmitter.dir/build.make:63: CMakeFiles/ROS_command_transmitter.dir/src/ROS_command_transmitter.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:272: CMakeFiles/ROS_command_transmitter.dir/all] Error 2
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:141: all] Error 2
+make[3]: 警告: jobserver 不可用: 正使用 -j1。添加 “+” 到父 make 的规则。
+make[3]: 警告: jobserver 不可用: 正使用 -j1。添加 “+” 到父 make 的规则。

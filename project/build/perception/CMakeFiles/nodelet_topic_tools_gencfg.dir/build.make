@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/youran/Desktop/i2ros_project/project/src/perception
+CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/perception
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/youran/Desktop/i2ros_project/project/build/perception
+CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/perception
 
 # Utility rule file for nodelet_topic_tools_gencfg.
 
@@ -67,6 +67,6 @@ CMakeFiles/nodelet_topic_tools_gencfg.dir/clean:
 .PHONY : CMakeFiles/nodelet_topic_tools_gencfg.dir/clean
 
 CMakeFiles/nodelet_topic_tools_gencfg.dir/depend:
-	cd /home/youran/Desktop/i2ros_project/project/build/perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Desktop/i2ros_project/project/src/perception /home/youran/Desktop/i2ros_project/project/src/perception /home/youran/Desktop/i2ros_project/project/build/perception /home/youran/Desktop/i2ros_project/project/build/perception /home/youran/Desktop/i2ros_project/project/build/perception/CMakeFiles/nodelet_topic_tools_gencfg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zzy/introtoros_2025-main-project/project/build/perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/perception /home/zzy/introtoros_2025-main-project/project/src/perception /home/zzy/introtoros_2025-main-project/project/build/perception /home/zzy/introtoros_2025-main-project/project/build/perception /home/zzy/introtoros_2025-main-project/project/build/perception/CMakeFiles/nodelet_topic_tools_gencfg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/nodelet_topic_tools_gencfg.dir/depend
 

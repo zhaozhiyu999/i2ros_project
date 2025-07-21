@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/planning_package/lib/planning_package/planning_node"
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/planning_package/lib/planning_package/planning_node.pdb"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/planning_package/lib/planning_package/planning_node"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/planning_package/lib/planning_package/planning_node.pdb"
   "CMakeFiles/planning_node.dir/src/planning_node.cpp.o"
 )
 

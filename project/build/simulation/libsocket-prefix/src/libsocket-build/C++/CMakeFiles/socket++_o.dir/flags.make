@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -std=c++11 -O3 -DNDEBUG   -Wall -Wextra -fPIC
 
 CXX_DEFINES = -DMIXED
 
-CXX_INCLUDES = -I/home/youran/Desktop/i2ros_project/project/build/simulation/libsocket-prefix/src/libsocket/headers -I/home/youran/Desktop/i2ros_project/project/build/simulation/libsocket-prefix/src/libsocket-build/headers 
+CXX_INCLUDES = -I/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers -I/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-build/headers 
 

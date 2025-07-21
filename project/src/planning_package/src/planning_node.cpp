@@ -111,16 +111,16 @@ public:
         nh_.param("dwa/v_max", dwa_v_max_param_, v_max_param_default);
         nh_.param("dwa/w_min", dwa_w_min_param_, -0.6);
         nh_.param("dwa/w_max", dwa_w_max_param_, 0.6);
-        nh_.param("dwa/cost_heading", dwa_cost_heading_, 1.0);
-        nh_.param("dwa/cost_clear", dwa_cost_clear_, 2.0);
-        nh_.param("dwa/cost_vel", dwa_cost_vel_, 0.5);
-        nh_.param("dwa/obstacle_range", dwa_obstacle_range_, 30.0);
-        nh_.param("dwa/inflation_radius", dwa_inflation_radius_, 1.5);
-        nh_.param("dwa/cost_path", dwa_cost_path_, 2.0);   // 可在 YAML 调
+        nh_.param("dwa/cost_heading", dwa_cost_heading_, 2.0);
+        nh_.param("dwa/cost_clear", dwa_cost_clear_, 3.6);
+        nh_.param("dwa/cost_vel", dwa_cost_vel_, 0.8);
+        nh_.param("dwa/obstacle_range", dwa_obstacle_range_, 20.0);
+        nh_.param("dwa/inflation_radius", dwa_inflation_radius_, 2.3);
+        nh_.param("dwa/cost_path", dwa_cost_path_, 2.6);   
 
         // 🔥 新增参数
-        nh_.param("dwa/direction_weight", dwa_direction_weight_, 2.0);
-        nh_.param("dwa/forward_check_distance", forward_check_distance_, 2.0);
+        nh_.param("dwa/direction_weight", dwa_direction_weight_, 3.0);
+        nh_.param("dwa/forward_check_distance", forward_check_distance_, 6.0);
         nh_.param("path_progress_threshold", path_progress_threshold_, 1.5);
 
         // ========== 状态初始化 ==========

@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "/usr/src/googletest")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "/home/youran/Desktop/i2ros_project/project/build/msg_interfaces")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "/home/zzy/introtoros_2025-main-project/project/build/msg_interfaces")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

@@ -7,7 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/youran/Desktop/i2ros_project/project/devel/.private/control_package:$CMAKE_PREFIX_PATH"
-export PWD='/home/youran/Desktop/i2ros_project/project/build/control_package'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/youran/Desktop/i2ros_project/project/devel/.private/control_package/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/youran/Desktop/i2ros_project/project/src/control_package:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/zzy/introtoros_2025-main-project/project/devel/.private/control_package:$CMAKE_PREFIX_PATH"
+export PWD='/home/zzy/introtoros_2025-main-project/project/build/control_package'
+export ROSLISP_PACKAGE_DIRECTORIES="/home/zzy/introtoros_2025-main-project/project/devel/.private/control_package/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/zzy/introtoros_2025-main-project/project/src/control_package:$ROS_PACKAGE_PATH"

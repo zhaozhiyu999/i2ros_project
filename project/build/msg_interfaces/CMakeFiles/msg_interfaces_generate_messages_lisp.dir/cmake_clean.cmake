@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/msg_interfaces/share/common-lisp/ros/msg_interfaces/msg/Trajectory.lisp"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/msg_interfaces/share/common-lisp/ros/msg_interfaces/msg/Trajectory.lisp"
   "CMakeFiles/msg_interfaces_generate_messages_lisp"
 )
 

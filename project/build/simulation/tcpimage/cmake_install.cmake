@@ -1,8 +1,8 @@
-# Install script for directory: /home/youran/Desktop/i2ros_project/project/src/simulation/tcpimage
+# Install script for directory: /home/zzy/introtoros_2025-main-project/project/src/simulation/tcpimage
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/youran/Desktop/i2ros_project/project/install")
+  set(CMAKE_INSTALL_PREFIX "/home/zzy/introtoros_2025-main-project/project/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

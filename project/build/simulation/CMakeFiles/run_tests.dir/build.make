@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/youran/Desktop/i2ros_project/project/src/simulation
+CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/simulation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/youran/Desktop/i2ros_project/project/build/simulation
+CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/simulation
 
 # Utility rule file for run_tests.
 
@@ -67,6 +67,6 @@ CMakeFiles/run_tests.dir/clean:
 .PHONY : CMakeFiles/run_tests.dir/clean
 
 CMakeFiles/run_tests.dir/depend:
-	cd /home/youran/Desktop/i2ros_project/project/build/simulation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Desktop/i2ros_project/project/src/simulation /home/youran/Desktop/i2ros_project/project/src/simulation /home/youran/Desktop/i2ros_project/project/build/simulation /home/youran/Desktop/i2ros_project/project/build/simulation /home/youran/Desktop/i2ros_project/project/build/simulation/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zzy/introtoros_2025-main-project/project/build/simulation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/simulation /home/zzy/introtoros_2025-main-project/project/src/simulation /home/zzy/introtoros_2025-main-project/project/build/simulation /home/zzy/introtoros_2025-main-project/project/build/simulation /home/zzy/introtoros_2025-main-project/project/build/simulation/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests.dir/depend
 

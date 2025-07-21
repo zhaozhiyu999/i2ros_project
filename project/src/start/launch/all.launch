@@ -1,0 +1,19 @@
+<launch>
+    <!-- Step 1: start simulation -->
+    <include file="$(find simulation)/launch/simulation.launch" />
+
+    <!-- Step 2: start perception -->
+    <include file="$(find perception)/launch/perception.launch" />
+
+    <!-- Step 3: start planning -->
+    <include file="$(find planning_package)/launch/planning.launch" />
+
+    <!-- Step 4: start decision -->
+    <include file="$(find decision_making)/launch/decision.launch" />
+
+    <!-- Step 5: start control -->
+    <include file="$(find control_package)/launch/control.launch" />
+
+    <!-- Step 6: start rviz with config -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find planning_package)/config/planning_viz.rviz" output="screen" />
+</launch>

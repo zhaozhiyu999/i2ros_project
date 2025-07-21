@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/youran/Desktop/i2ros_project/project/build/simulation/libsocket-prefix/src/libsocket/C/inet/libinetsocket.c" "/home/youran/Desktop/i2ros_project/project/build/simulation/libsocket-prefix/src/libsocket-build/C/CMakeFiles/socket_o.dir/inet/libinetsocket.c.o"
-  "/home/youran/Desktop/i2ros_project/project/build/simulation/libsocket-prefix/src/libsocket/C/unix/libunixsocket.c" "/home/youran/Desktop/i2ros_project/project/build/simulation/libsocket-prefix/src/libsocket-build/C/CMakeFiles/socket_o.dir/unix/libunixsocket.c.o"
+  "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/C/inet/libinetsocket.c" "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-build/C/CMakeFiles/socket_o.dir/inet/libinetsocket.c.o"
+  "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/C/unix/libunixsocket.c" "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket-build/C/CMakeFiles/socket_o.dir/unix/libunixsocket.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/youran/Desktop/i2ros_project/project/build/simulation/libsocket-prefix/src/libsocket/headers"
+  "/home/zzy/introtoros_2025-main-project/project/build/simulation/libsocket-prefix/src/libsocket/headers"
   "headers"
   )
 

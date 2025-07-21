@@ -34,7 +34,7 @@ public:
         // 基础控制参数
         nh_.param("base_gain", base_gain_, 25.0);                      // 基础增益
         nh_.param("speed_gain", speed_gain_, 0.8);
-        nh_.param("max_steering", max_steering_, 0.7);                 // 最大转向
+        nh_.param("max_steering", max_steering_, 1.0);                 // 最大转向
         nh_.param("steering_sign", steering_sign_, -1.0);
         
         // 角度阈值
@@ -43,10 +43,10 @@ public:
         nh_.param("medium_angle_threshold", medium_angle_threshold_, 1.7);  
         
         // 分级增益
-        nh_.param("micro_gain", micro_gain_, 20.0);                    // 微小角度增益
-        nh_.param("small_gain", small_gain_, 35.0);                    // 小角度增益  
-        nh_.param("medium_gain", medium_gain_, 50.0);                  // 中角度增益
-        nh_.param("large_gain", large_gain_, 65.0);                    // 大角度增益
+        nh_.param("micro_gain", micro_gain_, 80.0);                    // 微小角度增益
+        nh_.param("small_gain", small_gain_, 80.0);                    // 小角度增益  
+        nh_.param("medium_gain", medium_gain_, 80.0);                  // 中角度增益
+        nh_.param("large_gain", large_gain_, 120.0);                    // 大角度增益
         
         // ==================== 新增：稳定性控制参数 ====================
         nh_.param("stability_mode", stability_mode_, true);                    // 启用稳定模式
@@ -505,7 +505,7 @@ private:
     }
     
     double getTargetSpeed() {
-        double target_speed = 6.0;  // 降低默认速度，提高稳定性
+        double target_speed = 8.0;  // 降低默认速度，提高稳定性
         
         if (has_dwa_trajectory_ && !dwa_trajectory_.velocities.empty()) {
             double dwa_speed = static_cast<double>(dwa_trajectory_.velocities[0]);

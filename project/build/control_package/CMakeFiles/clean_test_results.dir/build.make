@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/youran/Desktop/i2ros_project/project/src/control_package
+CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/control_package
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/youran/Desktop/i2ros_project/project/build/control_package
+CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/control_package
 
 # Utility rule file for clean_test_results.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/youran/Desktop/i2ros_project/project/build/control_pack
 include CMakeFiles/clean_test_results.dir/progress.make
 
 CMakeFiles/clean_test_results:
-	/usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/youran/Desktop/i2ros_project/project/build/control_package/test_results
+	/usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/zzy/introtoros_2025-main-project/project/build/control_package/test_results
 
 clean_test_results: CMakeFiles/clean_test_results
 clean_test_results: CMakeFiles/clean_test_results.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/clean_test_results.dir/clean:
 .PHONY : CMakeFiles/clean_test_results.dir/clean
 
 CMakeFiles/clean_test_results.dir/depend:
-	cd /home/youran/Desktop/i2ros_project/project/build/control_package && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Desktop/i2ros_project/project/src/control_package /home/youran/Desktop/i2ros_project/project/src/control_package /home/youran/Desktop/i2ros_project/project/build/control_package /home/youran/Desktop/i2ros_project/project/build/control_package /home/youran/Desktop/i2ros_project/project/build/control_package/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zzy/introtoros_2025-main-project/project/build/control_package && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/control_package /home/zzy/introtoros_2025-main-project/project/src/control_package /home/zzy/introtoros_2025-main-project/project/build/control_package /home/zzy/introtoros_2025-main-project/project/build/control_package /home/zzy/introtoros_2025-main-project/project/build/control_package/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean_test_results.dir/depend
 

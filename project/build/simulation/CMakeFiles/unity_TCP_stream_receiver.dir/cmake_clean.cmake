@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/simulation/lib/simulation/unity_TCP_stream_receiver"
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/simulation/lib/simulation/unity_TCP_stream_receiver.pdb"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/simulation/unity_TCP_stream_receiver"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/lib/simulation/unity_TCP_stream_receiver.pdb"
   "CMakeFiles/unity_TCP_stream_receiver.dir/src/unity_TCP_stream_receiver.cpp.o"
 )
 

@@ -1,4 +1,4 @@
-prefix=/home/youran/Desktop/i2ros_project/project/devel/.private/control_package
+prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/control_package
 
 Name: control_package
 Description: Description of control_package

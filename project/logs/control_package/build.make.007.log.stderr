@@ -1,8 +1,0 @@
-[01m[K/home/youran/Desktop/i2ros_project/project/src/control_package/src/control_node.cpp:[m[K In member function ‘[01m[Kdouble OptimizedDWAExecutor::calculateSmallAngleSteering(double, double)[m[K’:
-[01m[K/home/youran/Desktop/i2ros_project/project/src/control_package/src/control_node.cpp:315:76:[m[K [01;31m[Kerror: [m[K‘[01m[Ksmooth_steering_[m[K’ was not declared in this scope; did you mean ‘[01m[Ksmooth_steering[m[K’?
-  315 |         smooth_steering = std::max(-max_steering_, std::min(max_steering_, [01;31m[Ksmooth_steering_[m[K));
-      |                                                                            [01;31m[K^~~~~~~~~~~~~~~~[m[K
-      |                                                                            [32m[Ksmooth_steering[m[K
-make[2]: *** [CMakeFiles/control_node.dir/build.make:63: CMakeFiles/control_node.dir/src/control_node.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:995: CMakeFiles/control_node.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

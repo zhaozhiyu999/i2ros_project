@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/youran/Desktop/i2ros_project/project/src/dummy_controller
+CMAKE_SOURCE_DIR = /home/zzy/introtoros_2025-main-project/project/src/dummy_controller
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/youran/Desktop/i2ros_project/project/build/dummy_controller
+CMAKE_BINARY_DIR = /home/zzy/introtoros_2025-main-project/project/build/dummy_controller
 
 # Utility rule file for tests.
 
@@ -67,6 +67,6 @@ CMakeFiles/tests.dir/clean:
 .PHONY : CMakeFiles/tests.dir/clean
 
 CMakeFiles/tests.dir/depend:
-	cd /home/youran/Desktop/i2ros_project/project/build/dummy_controller && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/youran/Desktop/i2ros_project/project/src/dummy_controller /home/youran/Desktop/i2ros_project/project/src/dummy_controller /home/youran/Desktop/i2ros_project/project/build/dummy_controller /home/youran/Desktop/i2ros_project/project/build/dummy_controller /home/youran/Desktop/i2ros_project/project/build/dummy_controller/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zzy/introtoros_2025-main-project/project/build/dummy_controller && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zzy/introtoros_2025-main-project/project/src/dummy_controller /home/zzy/introtoros_2025-main-project/project/src/dummy_controller /home/zzy/introtoros_2025-main-project/project/build/dummy_controller /home/zzy/introtoros_2025-main-project/project/build/dummy_controller /home/zzy/introtoros_2025-main-project/project/build/dummy_controller/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tests.dir/depend
 

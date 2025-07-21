@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/simulation/share/roseus/ros/simulation/manifest.l"
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/simulation/share/roseus/ros/simulation/msg/VehicleControl.l"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/share/roseus/ros/simulation/manifest.l"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/simulation/share/roseus/ros/simulation/msg/VehicleControl.l"
   "CMakeFiles/simulation_generate_messages_eus"
 )
 

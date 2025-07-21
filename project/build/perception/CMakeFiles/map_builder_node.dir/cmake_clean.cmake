@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/perception/lib/perception/map_builder_node"
-  "/home/youran/Desktop/i2ros_project/project/devel/.private/perception/lib/perception/map_builder_node.pdb"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/perception/lib/perception/map_builder_node"
+  "/home/zzy/introtoros_2025-main-project/project/devel/.private/perception/lib/perception/map_builder_node.pdb"
   "CMakeFiles/map_builder_node.dir/src/map_builder_node.cpp.o"
 )
 
