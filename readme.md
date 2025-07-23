@@ -3,7 +3,13 @@
 This repository contains the full implementation of our team project for the "Introduction to ROS" course (TUM, Summer Term 2025). The system integrates perception, planning, decision-making, and control modules to drive a virtual car in Unity using ROS Noetic.
 
 ---
+## Authors
+Youran Wang, Contact: go73hay@mytum.de
+Summer Term 2025
+TUM – Introduction to ROS Course
 
+
+⸻
 ## System Architecture
 
 The project follows a modular architecture:
@@ -28,6 +34,20 @@ The project follows a modular architecture:
   - `git`, `catkin`, `roscore`, `rviz`
   - `git-lfs` (required to pull Unity binaries)
   - Python 3 & pip3
+  
+⸻
+Dependency List
+
+Run the following to check your installed Python libraries:
+```bash
+pip3 list
+```
+For reproducibility, you may also export the list:
+```bash
+pip3 freeze > requirements.txt
+```
+
+⸻
 
 Install Git LFS:
 
@@ -92,7 +112,7 @@ roslaunch launch all.launch
 ```
 This starts Unity simulator, perception, decision_making, planning, control, and RViz in one go.
 
-⸻
+——————————————————————————————————————————————————————————————————————————————————————————
 
 Running Modules Separately (Manual)
 
@@ -156,18 +176,6 @@ All custom messages are defined in msg_interfaces/:
 
 ⸻
 
-Dependency List
-
-Run the following to check your installed Python libraries:
-```bash
-pip3 list
-```
-For reproducibility, you may also export the list:
-```bash
-pip3 freeze > requirements.txt
-```
-
-⸻
 
 Development Tips
 	•	Always source devel/setup.bash before running any ROS node.
@@ -176,14 +184,6 @@ Development Tips
 
 ⸻
 
-Authors
-
-Summer Term 2025
-TUM – Introduction to ROS Course
-
-Contact: your-email@tum.de
-
-⸻
 
 License
 
