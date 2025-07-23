@@ -44,7 +44,7 @@ sudo apt install ros-noetic-octomap ros-noetic-image-common ros-noetic-ackermann
 ⸻
 
 Directory Structure
-
+```
 i2ros_project/
 ├── project/
 │   ├── src/
@@ -60,7 +60,7 @@ i2ros_project/
 ├── build/        # ignored
 ├── devel/        # ignored
 └── logs/         # ignored
-
+```
 .gitignore ensures build/, devel/, and logs/ are not committed.
 
 ⸻
