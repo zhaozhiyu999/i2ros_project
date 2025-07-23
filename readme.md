@@ -7,7 +7,7 @@ This repository contains the full implementation of our team project for the "In
 ##### Youran Wang, Contact: go73hay@mytum.de
 ##### Hao Tian, Contact: go49pel@mytum.de
 ##### Xu Yihang, 
-##### Yiping Zhou,
+##### Yiping Zhou, Contact: go76may@mytum.de
 ##### Zhiyu Zhao
 
 Summer Term 2025
