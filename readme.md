@@ -9,7 +9,7 @@ Summer Term 2025
 TUM – Introduction to ROS Course
 
 
-⸻
+
 ## System Architecture
 
 The project follows a modular architecture:
@@ -34,8 +34,7 @@ The project follows a modular architecture:
   - `git`, `catkin`, `roscore`, `rviz`
   - `git-lfs` (required to pull Unity binaries)
   - Python 3 & pip3
-  
-⸻
+
 Dependency List
 
 Run the following to check your installed Python libraries:
@@ -46,8 +45,6 @@ For reproducibility, you may also export the list:
 ```bash
 pip3 freeze > requirements.txt
 ```
-
-⸻
 
 Install Git LFS:
 
@@ -61,9 +58,9 @@ sudo apt update
 sudo apt install ros-noetic-octomap ros-noetic-image-common ros-noetic-ackermann-msgs
 ```
 
-⸻
 
-Directory Structure
+
+## Directory Structure
 ```
 i2ros_project/
 ├── project/
@@ -83,9 +80,8 @@ i2ros_project/
 ```
 .gitignore ensures build/, devel/, and logs/ are not committed.
 
-⸻
 
-Setup & Build Instructions
+#### Setup & Build Instructions
 
 Clone and Setup
 ```bash
@@ -101,9 +97,8 @@ catkin build
 source devel/setup.bash
 ```
 
-⸻
 
-Running the Full System (Recommended)
+#### Running the Full System (Recommended)
 
 You can launch everything using:
 ```bash
@@ -112,9 +107,8 @@ roslaunch launch all.launch
 ```
 This starts Unity simulator, perception, decision_making, planning, control, and RViz in one go.
 
-——————————————————————————————————————————————————————————————————————————————————————————
 
-Running Modules Separately (Manual)
+#### Running Modules Separately (Manual)
 
 Open 6 terminals and run the following steps:
 
@@ -125,7 +119,6 @@ roslaunch simulation simulation.launch
 ```
 Inside Unity Build/ folder, make sure spawnIndex = 0.
 
-⸻
 
 Terminal 2 – Perception
 ```bash
@@ -133,7 +126,6 @@ source devel/setup.bash
 roslaunch perception perception.launch
 ```
 
-⸻
 
 Terminal 3 – Decision Making
 ```bash
@@ -141,23 +133,17 @@ source devel/setup.bash
 roslaunch decision_making decision.launch
 ```
 
-⸻
-
 Terminal 4 – Planning
 ```bash
 source devel/setup.bash
 roslaunch planning planning.launch
 ```
 
-⸻
-
 Terminal 5 – Control
 ```bash
 source devel/setup.bash
 roslaunch control control.launch
 ```
-
-⸻
 
 Terminal 6 – RViz (Visualization)
 ```bash
@@ -166,7 +152,6 @@ rviz
 ```
 You can load /rviz/project_config.rviz or visualize /planning/trajectory and /vehicle/cmd.
 
-⸻
 
 Custom Messages
 
@@ -174,7 +159,7 @@ All custom messages are defined in msg_interfaces/:
 	•	Trajectory.msg: Includes poses, velocities, timestamps
 	•	All modules using custom interfaces should depend on msg_interfaces
 
-⸻
+
 
 
 Development Tips
@@ -182,14 +167,12 @@ Development Tips
 	•	Use catkin build instead of catkin_make for improved control and log clarity.
 	•	Follow naming conventions defined in principle_docs/.
 
-⸻
 
 
 License
 
 This project is part of a university course and follows academic fair use policies. Do not redistribute outside course scope.
 
-⸻
 
 
 ---
