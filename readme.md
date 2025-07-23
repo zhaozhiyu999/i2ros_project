@@ -1,188 +1,195 @@
-# Introduction to ROS – Course Project Autonomous Driving
+# Autonomous Driving Project – ROS @ TUM AAS 2025
 
-## Overview 
-This repository is part of the "Introduction to ROS" course project **Autonomous Driving**. It consists of a Unity-based driving simulation package and a dummy controller to help you understand how to control the vehicle.
+This repository contains the full implementation of our team project for the "Introduction to ROS" course (TUM, Summer Term 2025). The system integrates perception, planning, decision-making, and control modules to drive a virtual car in Unity using ROS Noetic.
 
-## Project Structure
+---
 
-| Package              | Description                                                                 |
-|----------------------|-----------------------------------------------------------------------------|
-| `simulation/`        | Unity-based simulation environment with ROS integration (provided by TUM)   |
-| `perception/`        | Camera + sensor processing; traffic light detection; occupancy grid mapping |
-| `planning/`          | Global path planning and local trajectory generation                        |
-| `decision_making/`   | Behavioral logic, red light stop, emergency braking, etc.                   |
-| `control/`           | Trajectory tracking and control command generation                          |
-| `dummy_controller/`  | Simple controller to demonstrate ROS control messages                       |
-| `msg_interfaces/`    | Custom ROS message types (e.g., `Trajectory.msg`)                            |
-| `start/launch/`      | Launch files, including `all.launch` to run the complete system             |
+## System Architecture
+
+The project follows a modular architecture:
+
+| Module             | Description |
+|--------------------|-------------|
+| `simulation/`      | Unity-based simulator bridge (provided by instructor) |
+| `perception/`      | Processes camera/LiDAR input, builds occupancy grid, detects traffic lights |
+| `planning/`        | Performs trajectory planning using DWA, based on perception input |
+| `decision_making/` | Determines behavior like red-light stops, merging, and emergency braking |
+| `control/`         | Converts trajectory into steering/throttle commands |
+| `msg_interfaces/`  | Custom message definitions (e.g., `Trajectory.msg`) |
+| `launch/`          | Contains `all.launch` to start the entire system |
 
 ---
 
 ## System Requirements
 
-- **Operating System**: Ubuntu 20.04 (native or via WSL2)
-- **ROS Version**: Noetic
-- **Unity Simulator**: Precompiled Unity-based environment (provided)
-- **Others**:
-  - `catkin` build tools
-  - Git + Git LFS
+- **OS**: Ubuntu 20.04
+- **ROS Version**: ROS Noetic Ninjemys
+- **Other Tools**:
+  - `git`, `catkin`, `roscore`, `rviz`
+  - `git-lfs` (required to pull Unity binaries)
+  - Python 3 & pip3
 
-Install Git LFS if not installed:
+Install Git LFS:
 
 ```bash
 sudo apt install git-lfs
 git lfs install
-
-
-⸻
-
-ROS Dependency Installation
-
-Install ROS packages required for this project:
-
+```
+Install required ROS packages:
+```bash
 sudo apt update
 sudo apt install ros-noetic-octomap ros-noetic-image-common ros-noetic-ackermann-msgs
-
-You may also need Python dependencies (check pip3 list for full requirements):
-
-pip3 install -r requirements.txt  # If available
-
+```
 
 ⸻
 
-Build the Workspace
-
-Assuming your workspace is named i2ros_project/ and all packages are in src/:
-
-cd i2ros_project/
-bash src/setup_script.sh      # Makes simulation files executable (optional)
-catkin build
-source devel/setup.bash
-
-Be sure to add build/, devel/, and log/ to .gitignore.
-
-⸻
-
-How to Run the Project (Multi-Terminal Setup)
-
-The system is designed to run in 6 terminals, each with a specific role.
-
-Terminal 1: Launch Unity Simulation
-
-cd i2ros_project/
-source devel/setup.bash
-roslaunch simulation simulation.launch
-
-Make sure spawnIndex in Unity is set to 0.
-
-⸻
-
-Terminal 2: Launch Perception Module
-
-cd i2ros_project/
-source devel/setup.bash
-roslaunch perception perception.launch
-
-
-⸻
-
-Terminal 3: Launch Decision Module
-
-cd i2ros_project/
-source devel/setup.bash
-roslaunch decision_making decision.launch
-
-
-⸻
-
-Terminal 4: Launch Planning Module
-
-cd i2ros_project/
-source devel/setup.bash
-roslaunch planning planning.launch
-
-
-⸻
-
-Terminal 5: Launch Control Module
-
-cd i2ros_project/
-source devel/setup.bash
-roslaunch control control.launch
-
-
-⸻
-
-Terminal 6: Launch RViz for Visualization
-
-cd i2ros_project/
-source devel/setup.bash
-rviz
-
-
-⸻
-
-One-Command Launch (Optional)
-
-You can also launch the full system with a single command:
-
-cd i2ros_project/
-source devel/setup.bash
-roslaunch start/launch/all.launch
-
-Ensure the Unity simulation is already running before launching all.launch.
-
-⸻
-
-Recommended Folder Structure
+Directory Structure
 
 i2ros_project/
-├── src/
-│   ├── simulation/
-│   ├── perception/
-│   ├── planning/
-│   ├── decision_making/
-│   ├── control/
-│   ├── dummy_controller/
-│   ├── msg_interfaces/
-│   ├── start/
-│   │   └── launch/
-│   │       └── all.launch
-│   ├── CMakeLists.txt
-│   └── setup_script.sh
-├── devel/
-├── build/
-├── logs/
-├── .gitignore
-└── README.md
+├── project/
+│   ├── src/
+│   │   ├── perception/
+│   │   ├── planning/
+│   │   ├── control/
+│   │   ├── decision_making/
+│   │   ├── msg_interfaces/
+│   ├── launch/
+│   │   └── all.launch
+│   ├── setup_script.sh
+│   └── README.md   <-- this file
+├── build/        # ignored
+├── devel/        # ignored
+└── logs/         # ignored
 
+.gitignore ensures build/, devel/, and logs/ are not committed.
 
 ⸻
 
-Notes & Tips
-	•	Always source devel/setup.bash before launching any node.
-	•	Adjust camera parameters or planning goals as needed in your own launch files.
-	•	All ROS topics, message types, and node names should match across packages.
+Setup & Build Instructions
+
+Clone and Setup
+```bash
+cd ~/catkin_ws/src
+git clone <repo-url> i2ros_project
+cd i2ros_project
+bash project/setup_script.sh
+```
+Build the Workspace
+```bash
+cd ~/catkin_ws
+catkin build
+source devel/setup.bash
+```
 
 ⸻
 
-Tools Used
-	•	ROS Noetic
-	•	Unity 3D
-	•	Git LFS
-	•	RViz
-	•	Python 3 + NumPy + OpenCV
+Running the Full System (Recommended)
+
+You can launch everything using:
+```bash
+source devel/setup.bash
+roslaunch launch all.launch
+```
+This starts Unity simulator, perception, decision_making, planning, control, and RViz in one go.
 
 ⸻
 
-Contact
+Running Modules Separately (Manual)
 
-For questions or issues, please contact the teaching team or raise an issue in the course forum.
+Open 6 terminals and run the following steps:
+
+Terminal 1 – Unity Simulator
+```bash
+source devel/setup.bash
+roslaunch simulation simulation.launch
+```
+Inside Unity Build/ folder, make sure spawnIndex = 0.
+
+⸻
+
+Terminal 2 – Perception
+```bash
+source devel/setup.bash
+roslaunch perception perception.launch
+```
+
+⸻
+
+Terminal 3 – Decision Making
+```bash
+source devel/setup.bash
+roslaunch decision_making decision.launch
+```
+
+⸻
+
+Terminal 4 – Planning
+```bash
+source devel/setup.bash
+roslaunch planning planning.launch
+```
+
+⸻
+
+Terminal 5 – Control
+```bash
+source devel/setup.bash
+roslaunch control control.launch
+```
+
+⸻
+
+Terminal 6 – RViz (Visualization)
+```bash
+source devel/setup.bash
+rviz
+```
+You can load /rviz/project_config.rviz or visualize /planning/trajectory and /vehicle/cmd.
+
+⸻
+
+Custom Messages
+
+All custom messages are defined in msg_interfaces/:
+	•	Trajectory.msg: Includes poses, velocities, timestamps
+	•	All modules using custom interfaces should depend on msg_interfaces
+
+⸻
+
+Dependency List
+
+Run the following to check your installed Python libraries:
+```bash
+pip3 list
+```
+For reproducibility, you may also export the list:
+```bash
+pip3 freeze > requirements.txt
+```
+
+⸻
+
+Development Tips
+	•	Always source devel/setup.bash before running any ROS node.
+	•	Use catkin build instead of catkin_make for improved control and log clarity.
+	•	Follow naming conventions defined in principle_docs/.
+
+⸻
+
+Authors
+
+Summer Term 2025
+TUM – Introduction to ROS Course
+
+Contact: your-email@tum.de
 
 ⸻
 
 License
 
-This project is provided for educational purposes within the TUM course “Introduction to ROS”.
+This project is part of a university course and follows academic fair use policies. Do not redistribute outside course scope.
+
+⸻
+
 
 ---
