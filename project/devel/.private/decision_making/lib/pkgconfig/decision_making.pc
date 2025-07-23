@@ -1,0 +1,8 @@
+prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/decision_making
+
+Name: decision_making
+Description: Description of decision_making
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

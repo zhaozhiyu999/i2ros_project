@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- 参数定义（必须放在最前面） -->
+    <arg name="use_rviz" default="false" />
+    <arg name="use_test_data" default="false" />
+    
+    <!-- 测试数据发布器（可选） -->
+    <node name="pose_test_publisher" pkg="control_package" type="pose_test_publisher" output="screen" if="$(arg use_test_data)" />
+    
+    <!-- 简化车辆控制节点 -->
+    <node name="control" pkg="control_package" type="control_node" output="screen">
+        <!-- 控制参数 -->
+        <param name="max_speed" value="2.0" />
+        <param name="max_steering" value="0.5" />
+        <param name="lookahead_distance" value="2.0" />
+        <param name="kp_steering" value="1.5" />
+        <param name="kp_speed" value="0.8" />
+        <param name="ki_speed" value="0.1" />
+        <param name="kd_speed" value="0.05" />
+        <param name="target_speed" value="1.0" />
+    </node>
+    
+    <!-- 可选：启动rviz进行可视化 -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find control_package)/config/control_visualization.rviz" if="$(arg use_rviz)" />
+</launch>

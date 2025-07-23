@@ -1,0 +1,11 @@
+<launch>
+  <!-- launch MAPbuilder -->
+  <include file="$(find perception)/launch/map_builder.launch" />
+
+  <!-- launch Trafficlight -->
+  <include file="$(find perception)/launch/traffic_light.launch" />
+  
+  <!-- Launch Hazarddetect -->
+  <include file="$(find perception)/launch/front_hazard.launch" />
+</launch>
+

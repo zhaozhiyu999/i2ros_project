@@ -1,0 +1,16 @@
+
+<launch>
+  <!-- SemanticCamera to INS -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="tf_semantic_relative_to_ins"
+	args="0.82 0.0 0.56 -1.5708 0 -1.5708 OurCar/INS OurCar/Sensors/SemanticCamera" />
+
+  <!-- RGBCameraRight to INS -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="tf_rgb_right_relative_to_ins"
+       args="0.82 0.2 0.56 -1.5708 0 -1.5708 OurCar/INS OurCar/Sensors/RGBCameraRight" />
+
+  <!-- RGBCameraLeft to INS -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="tf_rgb_left_relative_to_ins"
+       args="0.82 -0.2 0.56 -1.5708 0 -1.5708 OurCar/INS OurCar/Sensors/RGBCameraLeft" />
+       
+  <node pkg="perception" type="traffic_light_node" name="traffic_light_node" output="screen"/>
+</launch>

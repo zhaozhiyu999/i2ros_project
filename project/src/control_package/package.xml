@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>control_package</name>
+  <version>0.1.0</version>
+  <description>Vehicle control package for autonomous driving project</description>
+
+  <maintainer email="your.email@tum.de">Your Name</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- 构建依赖 -->
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>tf2</build_depend>
+  <build_depend>tf2_ros</build_depend>
+  <build_depend>tf2_geometry_msgs</build_depend>
+  <build_depend>simulation</build_depend>
+  <build_depend>msg_interfaces</build_depend>
+  <build_depend>eigen3</build_depend>
+
+  <!-- 构建导出依赖 -->
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>nav_msgs</build_export_depend>
+  <build_export_depend>tf2</build_export_depend>
+  <build_export_depend>tf2_ros</build_export_depend>
+  <build_export_depend>tf2_geometry_msgs</build_export_depend>
+  <build_export_depend>simulation</build_export_depend>
+  <build_export_depend>msg_interfaces</build_export_depend>
+
+  <!-- 执行依赖 -->
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>tf2</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>tf2_geometry_msgs</exec_depend>
+  <exec_depend>simulation</exec_depend>
+  <exec_depend>msg_interfaces</exec_depend>
+
+  <export>
+  </export>
+</package>

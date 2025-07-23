@@ -1,0 +1,5 @@
+
+<launch>
+     
+  <node pkg="perception" type="front_hazard_node" name="front_hazard_node" output="screen"/>
+</launch>
