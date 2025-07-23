@@ -4,7 +4,12 @@ This repository contains the full implementation of our team project for the "In
 
 ---
 ## Authors
-Youran Wang, Contact: go73hay@mytum.de
+##### Youran Wang, Contact: go73hay@mytum.de
+##### Hao Tian, Contact: go49pel@mytum.de
+##### Xu Yihang, 
+##### Yiping Zhou,
+##### Zhiyu Zhao
+
 Summer Term 2025
 TUM – Introduction to ROS Course
 
@@ -57,7 +62,6 @@ Install required ROS packages:
 sudo apt update
 sudo apt install ros-noetic-octomap ros-noetic-image-common ros-noetic-ackermann-msgs
 ```
-
 
 
 ## Directory Structure
@@ -153,7 +157,7 @@ rviz
 You can load /rviz/project_config.rviz or visualize /planning/trajectory and /vehicle/cmd.
 
 
-Custom Messages
+### Custom Messages
 
 All custom messages are defined in msg_interfaces/:
 	•	Trajectory.msg: Includes poses, velocities, timestamps
@@ -169,7 +173,7 @@ Development Tips
 
 
 
-License
+## License
 
 This project is part of a university course and follows academic fair use policies. Do not redistribute outside course scope.
 
