@@ -5,10 +5,11 @@ This repository contains the full implementation of our team project for the "In
 ---
 ## Authors
 ##### Youran Wang, Contact: go73hay@mytum.de
+##### Zhiyu Zhao，Zhiyu.zhao@tum.de
+##### Xu Yihang, go57bup@mytum.de
 ##### Hao Tian, Contact: go49pel@mytum.de
-##### Xu Yihang, 
 ##### Yiping Zhou, Contact: go76may@mytum.de
-##### Zhiyu Zhao
+
 
 Summer Term 2025
 TUM – Introduction to ROS Course
@@ -110,52 +111,6 @@ source devel/setup.bash
 roslaunch launch all.launch
 ```
 This starts Unity simulator, perception, decision_making, planning, control, and RViz in one go.
-
-
-#### Running Modules Separately (Manual)
-
-Open 6 terminals and run the following steps:
-
-Terminal 1 – Unity Simulator
-```bash
-source devel/setup.bash
-roslaunch simulation simulation.launch
-```
-Inside Unity Build/ folder, make sure spawnIndex = 0.
-
-
-Terminal 2 – Perception
-```bash
-source devel/setup.bash
-roslaunch perception perception.launch
-```
-
-
-Terminal 3 – Decision Making
-```bash
-source devel/setup.bash
-roslaunch decision_making decision.launch
-```
-
-Terminal 4 – Planning
-```bash
-source devel/setup.bash
-roslaunch planning planning.launch
-```
-
-Terminal 5 – Control
-```bash
-source devel/setup.bash
-roslaunch control control.launch
-```
-
-Terminal 6 – RViz (Visualization)
-```bash
-source devel/setup.bash
-rviz
-```
-You can load /rviz/project_config.rviz or visualize /planning/trajectory and /vehicle/cmd.
-
 
 ### Custom Messages
 
