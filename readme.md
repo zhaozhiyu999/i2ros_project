@@ -69,19 +69,19 @@ sudo apt install ros-noetic-octomap ros-noetic-image-common ros-noetic-ackermann
 ```
 i2ros_project/
 ├── project/
-│   ├── src/
-│   │   ├── perception/
-│   │   ├── planning_package/
-│   │   ├── control_package/
-│   │   ├── decision_making/
-│   │   ├── msg_interfaces/
-│   ├── launch/
-│   │   └── all.launch
-│   ├── setup_script.sh
-│   └── README.md   <-- this file
-├── build/        # ignored
-├── devel/        # ignored
-└── logs/         # ignored
+    ├── src/
+    │   ├── perception/
+    │   ├── planning_package/
+    │   ├── control_package/
+    │   ├── decision_making/
+    │   ├── msg_interfaces/
+    ├── launch/
+    │   └── all.launch
+    ├── setup_script.sh
+    └── README.md   <-- this file
+	├── build/        # ignored
+	├── devel/        # ignored
+	└── logs/         # ignored
 ```
 .gitignore ensures build/, devel/, and logs/ are not committed.
 
