@@ -88,6 +88,7 @@ i2ros_project/
 
 #### Setup & Build Instructions
 
+```bash
 # Create a catkin workspace if it doesn't exist
 mkdir -p ~/catkin_ws/src
 
