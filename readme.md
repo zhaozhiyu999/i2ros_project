@@ -111,6 +111,8 @@ source devel/setup.bash
 
 You can launch everything using:
 ```bash
+cd ~/catkin_ws/src
+cd i2ros_project/project
 source devel/setup.bash
 roslaunch launch all.launch
 ```
