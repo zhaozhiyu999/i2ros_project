@@ -91,7 +91,7 @@ i2ros_project/
 ```bash
 # Create a catkin workspace if it doesn't exist
 mkdir -p ~/catkin_ws/src
-
+```
 Clone and Setup
 ```bash
 cd ~/catkin_ws/src
