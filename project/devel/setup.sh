@@ -1,1 +1,0 @@
-/home/zzy/introtoros_2025-main-project/project/devel/.private/catkin_tools_prebuild/setup.sh

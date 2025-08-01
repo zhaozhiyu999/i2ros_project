@@ -1,8 +1,0 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/perception
-
-Name: perception
-Description: Description of perception
-Version: 0.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

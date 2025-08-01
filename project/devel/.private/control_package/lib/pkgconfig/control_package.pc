@@ -1,8 +1,0 @@
-prefix=/home/zzy/introtoros_2025-main-project/project/devel/.private/control_package
-
-Name: control_package
-Description: Description of control_package
-Version: 0.1.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

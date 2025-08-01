@@ -1,1 +1,5 @@
 .vscode/
+/project/build/
+/project/devel/
+/project/logs/
+/project/.catkin_tools/
