@@ -24,9 +24,9 @@ The project follows a modular architecture:
 |--------------------|-------------|
 | `simulation/`      | Unity-based simulator bridge (provided by instructor) |
 | `perception/`      | Processes camera/LiDAR input, builds occupancy grid, detects traffic lights |
-| `planning/`        | Performs trajectory planning using DWA, based on perception input |
+| `planning_package/`        | Performs trajectory planning using DWA, based on perception input |
 | `decision_making/` | Determines behavior like red-light stops, merging, and emergency braking |
-| `control/`         | Converts trajectory into steering/throttle commands |
+| `control_package/`         | Converts trajectory into steering/throttle commands |
 | `msg_interfaces/`  | Custom message definitions (e.g., `Trajectory.msg`) |
 | `launch/`          | Contains `all.launch` to start the entire system |
 
@@ -71,8 +71,8 @@ i2ros_project/
 ├── project/
 │   ├── src/
 │   │   ├── perception/
-│   │   ├── planning/
-│   │   ├── control/
+│   │   ├── planning_package/
+│   │   ├── control_package/
 │   │   ├── decision_making/
 │   │   ├── msg_interfaces/
 │   ├── launch/
@@ -91,7 +91,7 @@ i2ros_project/
 Clone and Setup
 ```bash
 cd ~/catkin_ws/src
-git clone <repo-url> i2ros_project
+git clone git@gitlab.lrz.de:mpfav-2024/commonroad-pvd-planner.git i2ros_project
 cd i2ros_project
 bash project/setup_script.sh
 ```
