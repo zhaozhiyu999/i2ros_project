@@ -88,11 +88,14 @@ i2ros_project/
 
 #### Setup & Build Instructions
 
+# Create a catkin workspace if it doesn't exist
+mkdir -p ~/catkin_ws/src
+
 Clone and Setup
 ```bash
 cd ~/catkin_ws/src
-git clone git@gitlab.lrz.de:mpfav-2024/commonroad-pvd-planner.git i2ros_project
-cd i2ros_project
+git clone git@gitlab.lrz.de:zhiyu_zhao/i2ros_project.git i2ros_project
+cd i2ros_project/project
 bash project/setup_script.sh
 ```
 Build the Workspace
