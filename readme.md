@@ -114,7 +114,7 @@ You can launch everything using:
 cd ~/catkin_ws/src
 cd i2ros_project/project
 source devel/setup.bash
-roslaunch launch all.launch
+roslaunch start all.launch
 ```
 This starts Unity simulator, perception, decision_making, planning, control, and RViz in one go.
 
