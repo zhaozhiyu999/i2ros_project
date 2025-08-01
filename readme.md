@@ -3,7 +3,7 @@
 This repository contains the full implementation of our team project for the "Introduction to ROS" course (TUM, Summer Term 2025). The system integrates perception, planning, decision-making, and control modules to drive a virtual car in Unity using ROS Noetic.
 
 ---
-## Authors
+## Authors （Group7）
 ##### Youran Wang, Contact: go73hay@mytum.de
 ##### Zhiyu Zhao，Zhiyu.zhao@tum.de
 ##### Xu Yihang, go57bup@mytum.de
@@ -103,7 +103,7 @@ source devel/setup.bash
 ```
 
 
-#### Running the Full System (Recommended)
+#### Running the Full System
 
 You can launch everything using:
 ```bash
