@@ -1,3 +1,5 @@
+This is project of i2ros course of TUM in 2025SS. Forbidden to directly use them as submission to teacher!!!
+
 # Autonomous Driving Project – ROS @ TUM AAS 2025
 
 This repository contains the full implementation of our team project for the "Introduction to ROS" course (TUM, Summer Term 2025). The system integrates perception, planning, decision-making, and control modules to drive a virtual car in Unity using ROS Noetic.
